@@ -1,0 +1,11 @@
+{
+  "mode": "pre",
+  "tag": "alpha",
+  "initialVersions": {
+    "@beratiyilik/react-components": "0.0.0",
+    "@beratiyilik/react-table": "0.0.0"
+  },
+  "changesets": [
+    "metal-planets-wonder"
+  ]
+}
