@@ -1,7 +1,7 @@
 {
-  "name": "@beratiyilik/react-components",
+  "name": "@beratiyilik/react-table",
   "version": "0.0.0",
-  "description": "React component library built with styled-components",
+  "description": "React table component built on react-components",
   "type": "module",
   "sideEffects": false,
   "exports": {
@@ -34,14 +34,15 @@
   },
   "dependencies": {
     "@beratiyilik/browser-utils": "^0.0.0",
+    "@beratiyilik/react-components": "workspace:*",
     "@beratiyilik/ts-utils": "^0.0.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/beratiyilik/react-libs.git",
-    "directory": "packages/react-components"
+    "directory": "packages/react-table"
   },
-  "homepage": "https://github.com/beratiyilik/react-libs/tree/main/packages/react-components#readme",
+  "homepage": "https://github.com/beratiyilik/react-libs/tree/main/packages/react-table#readme",
   "bugs": {
     "url": "https://github.com/beratiyilik/react-libs/issues"
   },
