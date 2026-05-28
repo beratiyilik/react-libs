@@ -1,5 +1,4 @@
 packages:
   - "packages/*"
 minimumReleaseAgeExclude:
-  - '@beratiyilik/browser-utils@0.0.0'
-  - '@beratiyilik/ts-utils@0.0.0'
+  - '@beratiyilik/*'

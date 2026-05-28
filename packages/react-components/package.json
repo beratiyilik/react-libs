@@ -33,8 +33,8 @@
     "styled-components": ">=6.0.0"
   },
   "dependencies": {
-    "@beratiyilik/browser-utils": "^0.0.0",
-    "@beratiyilik/ts-utils": "^0.0.0"
+    "@beratiyilik/browser-utils": "0.1.0-alpha.0",
+    "@beratiyilik/ts-utils": "0.1.0-alpha.0"
   },
   "repository": {
     "type": "git",
