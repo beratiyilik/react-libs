@@ -2,3 +2,5 @@ packages:
   - "packages/*"
 minimumReleaseAgeExclude:
   - '@beratiyilik/*'
+  - '@arethetypeswrong/cli@0.18.3'
+  - '@arethetypeswrong/core@0.18.3'

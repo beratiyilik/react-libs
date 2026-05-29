@@ -27,8 +27,8 @@ importers:
         specifier: ^3.8.3
         version: 3.8.3
       turbo:
-        specifier: ^2.9.15
-        version: 2.9.15
+        specifier: ^2.9.16
+        version: 2.9.16
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -39,15 +39,15 @@ importers:
   packages/react-components:
     dependencies:
       '@beratiyilik/browser-utils':
-        specifier: 0.1.0-alpha.0
-        version: 0.1.0-alpha.0
+        specifier: 0.1.0-alpha.1
+        version: 0.1.0-alpha.1
       '@beratiyilik/ts-utils':
-        specifier: 0.1.0-alpha.0
-        version: 0.1.0-alpha.0
+        specifier: 0.1.0-alpha.1
+        version: 0.1.0-alpha.1
     devDependencies:
       '@arethetypeswrong/cli':
-        specifier: ^0.18.2
-        version: 0.18.2
+        specifier: ^0.18.3
+        version: 0.18.3
       '@testing-library/jest-dom':
         specifier: ^6.9.1
         version: 6.9.1
@@ -92,8 +92,8 @@ importers:
         version: 7.3.0
     devDependencies:
       '@arethetypeswrong/cli':
-        specifier: ^0.18.2
-        version: 0.18.2
+        specifier: ^0.18.3
+        version: 0.18.3
       '@testing-library/jest-dom':
         specifier: ^6.9.1
         version: 6.9.1
@@ -136,13 +136,13 @@ packages:
   '@andrewbranch/untar.js@1.0.3':
     resolution: {integrity: sha512-Jh15/qVmrLGhkKJBdXlK1+9tY4lZruYjsgkDFj08ZmDiWVBLJcqkok7Z0/R0In+i1rScBpJlSvrTS2Lm41Pbnw==}
 
-  '@arethetypeswrong/cli@0.18.2':
-    resolution: {integrity: sha512-PcFM20JNlevEDKBg4Re29Rtv2xvjvQZzg7ENnrWFSS0PHgdP2njibVFw+dRUhNkPgNfac9iUqO0ohAXqQL4hbw==}
+  '@arethetypeswrong/cli@0.18.3':
+    resolution: {integrity: sha512-GeAlc+lUD4gKHD/LDQNvQY30FfQ+xAXg2inbQKUjFZgTOdI5ygEweaOnGHGBPSKXSLGQC7VLhpXu9zMnYk/4sQ==}
     engines: {node: '>=20'}
     hasBin: true
 
-  '@arethetypeswrong/core@0.18.2':
-    resolution: {integrity: sha512-GiwTmBFOU1/+UVNqqCGzFJYfBXEytUkiI+iRZ6Qx7KmUVtLm00sYySkfe203C9QtPG11yOz1ZaMek8dT/xnlgg==}
+  '@arethetypeswrong/core@0.18.3':
+    resolution: {integrity: sha512-sWBB/tdIktaT5xMq0Dz6CJyqcf6oMNdmiKiuPU1lWoJLTL6gjRSsksBuSgqot21hylkklBQY1wiSu+PkZhW7sw==}
     engines: {node: '>=20'}
 
   '@asamuzakjp/css-color@5.1.11':
@@ -172,12 +172,12 @@ packages:
     resolution: {integrity: sha512-Nq8OhGWiZIZGV6hLHoyAKLLcJihP/xFeBMGJoUrxTX2psI8dCifzLhZISFb+VWS3wFMRDmCGw5R+dOySCqPLhw==}
     engines: {node: '>=6.9.0'}
 
-  '@beratiyilik/browser-utils@0.1.0-alpha.0':
-    resolution: {integrity: sha512-rKloKJKDvAzcECQCUT7vIs2T6T0eJRcz/hEooe/oj14Pvf9c6xyx8NJ4VA/3fW/dr10pn+m8BtQ7RQV6dnmHNA==}
+  '@beratiyilik/browser-utils@0.1.0-alpha.1':
+    resolution: {integrity: sha512-oWSvnZ8s/VmUvYL+XiXvZZYS0Tekkg14EbpxGB9foShrq9iyAIBIKUU7iBhZqbwr7sZXk6S40lO50EgDsyVOVw==}
     engines: {node: '>=24'}
 
-  '@beratiyilik/ts-utils@0.1.0-alpha.0':
-    resolution: {integrity: sha512-SIKgcenQ06FL/o7RuRvkboIkDcGMk34hPjX8qNwxlCNoroie0S9vQyGRjiyxUPnNelPiLptn+BYvKRqrLE2k1A==}
+  '@beratiyilik/ts-utils@0.1.0-alpha.1':
+    resolution: {integrity: sha512-5Y8wMnPWeyGymqnt4XEtkhXv43mf4ykNs4w2hfY66dh25VPNzG167I0e29QRQAQVllH+g8gXqgxzA0w6x7uFeQ==}
     engines: {node: '>=24'}
 
   '@braidai/lang@1.1.2':
@@ -545,33 +545,33 @@ packages:
       '@types/react-dom':
         optional: true
 
-  '@turbo/darwin-64@2.9.15':
-    resolution: {integrity: sha512-nnDo9R1Df+s2x6jxlERtbg7xRpuicf8p4J2krcnjeaMBt3q9V41pGXa4t9YM2Y4ozozsVJ+CH405CJUrWIQK4Q==}
+  '@turbo/darwin-64@2.9.16':
+    resolution: {integrity: sha512-jLjApWTSNd7JZ5JaLYfelW1ytnGQOvB7ivl+2RD1xQvJTbi8I9gBjzcga7tDZVPyaxpl10YTfJt3BrYXR18KDw==}
     cpu: [x64]
     os: [darwin]
 
-  '@turbo/darwin-arm64@2.9.15':
-    resolution: {integrity: sha512-fDSx56oqoFuS+yUQw7hqjQTkjrSLdMcplhuLC8HcSkWC6YrpwEmUUYsPYHPxy4ALvLxnmPQuk6XoSD8tdkjP+g==}
+  '@turbo/darwin-arm64@2.9.16':
+    resolution: {integrity: sha512-YPgrn+5HIGzrx0O2a631SV4MBQUe4W/DafMFUuBVgaU32PW9/OTT0ehviF0QSxTXuRJlHvW2eUTemddF5/spmw==}
     cpu: [arm64]
     os: [darwin]
 
-  '@turbo/linux-64@2.9.15':
-    resolution: {integrity: sha512-/bmxn+x/xE+oh0VzEXt/zf2zsORAYZPrL3db5/VrXzYt0Z4wxcvffwJBGlSfla2smfS1BLGBiyWldJlWDXJVXA==}
+  '@turbo/linux-64@2.9.16':
+    resolution: {integrity: sha512-vAEf1H6l26lTpl9FJ/peQo1NUB8RC0sbEJJz5mPcUhHA2bPDup2x3CZPgo/bH8S4cUcBLm4FN3UHd5iUO2RAew==}
     cpu: [x64]
     os: [linux]
 
-  '@turbo/linux-arm64@2.9.15':
-    resolution: {integrity: sha512-cbOaDe1ijz5As+mimOOHgmRMolZZZO7miNBHHp5xdiYMm2Q/Dwu1JVLx/Kw4s7xjocG/oEoHrpHrxpEAIEfNiw==}
+  '@turbo/linux-arm64@2.9.16':
+    resolution: {integrity: sha512-xDBLR2PZg4BrQOchfG6svgpv5FCNJ2TOtT2psLdEJcdKo1BH+pnPs9Xj6pvUjgfkHbuvBOfeE4R6tvxMoQKDHQ==}
     cpu: [arm64]
     os: [linux]
 
-  '@turbo/windows-64@2.9.15':
-    resolution: {integrity: sha512-/Fzm7afui7uK7dFBwrTXKuDhBBTiHk5I+hMVAPMR7cqQyDo2norCNUsN9PdNuYcmzYbhSOxzz498wQYvSAz29w==}
+  '@turbo/windows-64@2.9.16':
+    resolution: {integrity: sha512-NBAJnaUiGdgkSzQwUIdOvkCkcpTSu58G/sBGa0mvBtzfvFOOgrQwepKOOQ8cp6sWM6OcKDNFj2p1dsZA1OWjPg==}
     cpu: [x64]
     os: [win32]
 
-  '@turbo/windows-arm64@2.9.15':
-    resolution: {integrity: sha512-fOHEsLcqVdFXLw2ApWv4gxwfHzkUnpo9rHGml+9+dyHj148m/Bc+556kEvb5+4u6prI1LMd8zEZE2HcO6Jn2VQ==}
+  '@turbo/windows-arm64@2.9.16':
+    resolution: {integrity: sha512-Y7SJppD0Z8wjO3Ec0ZGd9KQ4Yv0BMnA8CIowj5Vp+OEVsosXDG2weK6/t1RRLfJmc2Ozrnd6y4DOgQys+mn3WQ==}
     cpu: [arm64]
     os: [win32]
 
@@ -1625,8 +1625,8 @@ packages:
     resolution: {integrity: sha512-Bf+ILmBgretUrdJxzXM0SgXLZ3XfiaUuOj/IKQHuTXip+05Xn+uyEYdVg0kYDipTBcLrCVyUzAPz7QmArb0mmw==}
     engines: {node: '>=14.0.0'}
 
-  tldts-core@7.4.0:
-    resolution: {integrity: sha512-/mb9kRld+x1sIMXxWNOAp5m6C+D4GrAORWlJkOJ5dElvxdN1eutz/o7qHLp9gFvDF4Y3/L2xeScoxz6AbEo8rQ==}
+  tldts-core@7.4.1:
+    resolution: {integrity: sha512-sc2nGvGbixlJRHwTh/qQdPXTxJU1UDJboGPQm4d/01YUJ9r/u6aeIulQvEaxUlvKDN7hb1qCLjax+jhVAPLa/g==}
 
   tldts@7.4.0:
     resolution: {integrity: sha512-yHBe+zVfzNZ3QfTPW/Z6KK1G2t340gFjMHqI/4KKSt/abzYydzuCnpqdaF5gCCABby+9Yfbj59oR5F2Fd5CBzg==}
@@ -1656,8 +1656,8 @@ packages:
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
-  turbo@2.9.15:
-    resolution: {integrity: sha512-VpKvD9Z0Hu/xrGUAYX1wnhfpqv835wIwGqeKfulvBPTOcDap0E3nFwyzCAVV85fB1sBcBDEfTP+7FSW7GzwWSQ==}
+  turbo@2.9.16:
+    resolution: {integrity: sha512-NqgRQy6j6dPYcdSdv0q1g9QsZg7SWg87RERM8otw/1AtKU2yTFVClOM7cbwKzOonZr/Ek1blTBucw64L9H0Bwg==}
     hasBin: true
 
   type-check@0.4.0:
@@ -1853,9 +1853,9 @@ snapshots:
 
   '@andrewbranch/untar.js@1.0.3': {}
 
-  '@arethetypeswrong/cli@0.18.2':
+  '@arethetypeswrong/cli@0.18.3':
     dependencies:
-      '@arethetypeswrong/core': 0.18.2
+      '@arethetypeswrong/core': 0.18.3
       chalk: 4.1.2
       cli-table3: 0.6.5
       commander: 10.0.1
@@ -1863,7 +1863,7 @@ snapshots:
       marked-terminal: 7.3.0(marked@9.1.6)
       semver: 7.8.1
 
-  '@arethetypeswrong/core@0.18.2':
+  '@arethetypeswrong/core@0.18.3':
     dependencies:
       '@andrewbranch/untar.js': 1.0.3
       '@loaderkit/resolve': 1.0.6
@@ -1904,11 +1904,11 @@ snapshots:
 
   '@babel/runtime@7.29.7': {}
 
-  '@beratiyilik/browser-utils@0.1.0-alpha.0':
+  '@beratiyilik/browser-utils@0.1.0-alpha.1':
     dependencies:
-      '@beratiyilik/ts-utils': 0.1.0-alpha.0
+      '@beratiyilik/ts-utils': 0.1.0-alpha.1
 
-  '@beratiyilik/ts-utils@0.1.0-alpha.0': {}
+  '@beratiyilik/ts-utils@0.1.0-alpha.1': {}
 
   '@braidai/lang@1.1.2': {}
 
@@ -2310,22 +2310,22 @@ snapshots:
       '@types/react': 19.2.15
       '@types/react-dom': 19.2.3(@types/react@19.2.15)
 
-  '@turbo/darwin-64@2.9.15':
+  '@turbo/darwin-64@2.9.16':
     optional: true
 
-  '@turbo/darwin-arm64@2.9.15':
+  '@turbo/darwin-arm64@2.9.16':
     optional: true
 
-  '@turbo/linux-64@2.9.15':
+  '@turbo/linux-64@2.9.16':
     optional: true
 
-  '@turbo/linux-arm64@2.9.15':
+  '@turbo/linux-arm64@2.9.16':
     optional: true
 
-  '@turbo/windows-64@2.9.15':
+  '@turbo/windows-64@2.9.16':
     optional: true
 
-  '@turbo/windows-arm64@2.9.15':
+  '@turbo/windows-arm64@2.9.16':
     optional: true
 
   '@tybys/wasm-util@0.10.2':
@@ -3311,11 +3311,11 @@ snapshots:
 
   tinyrainbow@3.1.0: {}
 
-  tldts-core@7.4.0: {}
+  tldts-core@7.4.1: {}
 
   tldts@7.4.0:
     dependencies:
-      tldts-core: 7.4.0
+      tldts-core: 7.4.1
 
   to-regex-range@5.0.1:
     dependencies:
@@ -3338,14 +3338,14 @@ snapshots:
   tslib@2.8.1:
     optional: true
 
-  turbo@2.9.15:
+  turbo@2.9.16:
     optionalDependencies:
-      '@turbo/darwin-64': 2.9.15
-      '@turbo/darwin-arm64': 2.9.15
-      '@turbo/linux-64': 2.9.15
-      '@turbo/linux-arm64': 2.9.15
-      '@turbo/windows-64': 2.9.15
-      '@turbo/windows-arm64': 2.9.15
+      '@turbo/darwin-64': 2.9.16
+      '@turbo/darwin-arm64': 2.9.16
+      '@turbo/linux-64': 2.9.16
+      '@turbo/linux-arm64': 2.9.16
+      '@turbo/windows-64': 2.9.16
+      '@turbo/windows-arm64': 2.9.16
 
   type-check@0.4.0:
     dependencies:
