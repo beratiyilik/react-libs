@@ -1,6 +1,6 @@
 {
   "name": "@beratiyilik/react-table",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "description": "React table component built on react-components",
   "type": "module",
   "sideEffects": false,
@@ -52,7 +52,7 @@
     "provenance": true
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "^0.18.2",
+    "@arethetypeswrong/cli": "^0.18.3",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@types/react": "^19.2.15",

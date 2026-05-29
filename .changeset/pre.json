@@ -6,6 +6,7 @@
     "@beratiyilik/react-table": "0.0.0"
   },
   "changesets": [
-    "metal-planets-wonder"
+    "funny-deserts-relate",
+    "pink-laws-drive"
   ]
 }
