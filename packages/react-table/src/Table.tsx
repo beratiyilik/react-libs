@@ -1,34 +1,26 @@
 "use client";
+import { TableProvider } from "./context/table.context.js";
+import { TopSection, HeaderSection, BodySection, FooterSection } from "./components/sections/index.js";
+import { StyledTableContainer, StyledTable } from "./styled/index.js";
+import type { TableOptions } from "./types/index.js";
 
-import { Stack, Button } from "@beratiyilik/react-components";
-import type { HTMLAttributes } from "react";
-
-export type TableProps = Omit<HTMLAttributes<HTMLDivElement>, "onRowClick"> & {
-  columns: ReadonlyArray<string>;
-  rows: ReadonlyArray<ReadonlyArray<string>>;
-  onRowClick?: (row: ReadonlyArray<string>, index: number) => void;
+export type TableProps<T extends Record<string, unknown>> = {
+  options: TableOptions<T>;
+  data: T[];
 };
 
-export const Table = ({ columns, rows, onRowClick, ...rest }: TableProps) => {
-  return (
-    <Stack gap="sm" {...rest}>
-      <Stack direction="row" gap="md">
-        {columns.map((col) => (
-          <strong key={col}>{col}</strong>
-        ))}
-      </Stack>
-      {rows.map((row, i) => (
-        <Stack key={i} direction="row" gap="md">
-          {row.map((cell, j) => (
-            <span key={j}>{cell}</span>
-          ))}
-          {onRowClick && (
-            <Button variant="secondary" onClick={() => onRowClick(row, i)}>
-              Select
-            </Button>
-          )}
-        </Stack>
-      ))}
-    </Stack>
-  );
-};
+export const Table = <T extends Record<string, unknown>>({
+  options,
+  data,
+}: TableProps<T>) => (
+  <TableProvider options={options} data={data}>
+    <StyledTableContainer>
+      <StyledTable>
+        <TopSection />
+        <HeaderSection />
+        <BodySection />
+        <FooterSection />
+      </StyledTable>
+    </StyledTableContainer>
+  </TableProvider>
+);
