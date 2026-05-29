@@ -33,7 +33,8 @@
     "styled-components": ">=6.0.0"
   },
   "dependencies": {
-    "@beratiyilik/react-components": "workspace:*"
+    "@beratiyilik/react-components": "workspace:*",
+    "fuse.js": "^7.3.0"
   },
   "repository": {
     "type": "git",

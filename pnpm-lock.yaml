@@ -87,6 +87,9 @@ importers:
       '@beratiyilik/react-components':
         specifier: workspace:*
         version: link:../react-components
+      fuse.js:
+        specifier: ^7.3.0
+        version: 7.3.0
     devDependencies:
       '@arethetypeswrong/cli':
         specifier: ^0.18.2
@@ -170,11 +173,11 @@ packages:
     engines: {node: '>=6.9.0'}
 
   '@beratiyilik/browser-utils@0.1.0-alpha.0':
-    resolution: {integrity: sha512-YitwL10drtxuP+dSKSuVeo/g8cFGdPIgtAA4Bu1odMEcYeQ4tjIh/bQUPEppgfx93QTxkEcoFMhsiZ7FD0r57A==}
+    resolution: {integrity: sha512-rKloKJKDvAzcECQCUT7vIs2T6T0eJRcz/hEooe/oj14Pvf9c6xyx8NJ4VA/3fW/dr10pn+m8BtQ7RQV6dnmHNA==}
     engines: {node: '>=24'}
 
   '@beratiyilik/ts-utils@0.1.0-alpha.0':
-    resolution: {integrity: sha512-MwvaBpxz31Q7y2T9kWl7zAElbvotRJl0aqSDX5phaVpGe7OXSZHN4lu4f35Gj5uHqiYdJzzSb4LwMXY9eywCIA==}
+    resolution: {integrity: sha512-SIKgcenQ06FL/o7RuRvkboIkDcGMk34hPjX8qNwxlCNoroie0S9vQyGRjiyxUPnNelPiLptn+BYvKRqrLE2k1A==}
     engines: {node: '>=24'}
 
   '@braidai/lang@1.1.2':
@@ -1031,6 +1034,10 @@ packages:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
+
+  fuse.js@7.3.0:
+    resolution: {integrity: sha512-plz8RVjfcDedTGfVngWH1jmJvBvAwi1v2jecfDerbEnMcmOYUEEwKFTHbNoCiYyzaK2Ws8lABkTCcRSqCY1q4w==}
+    engines: {node: '>=10'}
 
   get-caller-file@2.0.5:
     resolution: {integrity: sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==}
@@ -2798,6 +2805,8 @@ snapshots:
 
   fsevents@2.3.3:
     optional: true
+
+  fuse.js@7.3.0: {}
 
   get-caller-file@2.0.5: {}
 
