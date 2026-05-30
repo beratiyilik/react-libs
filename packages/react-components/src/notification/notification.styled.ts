@@ -1,35 +1,38 @@
 import { styled } from "styled-components";
 import type { NotifyType } from "./notification.constants.js";
 
-const colorMap: Record<NotifyType, string> = {
-  success: "#4caf50",
-  error: "#f44336",
-  info: "#2196f3",
-  warning: "#ff9800",
-};
-
 export const StyledNotificationsContainer = styled.div`
   position: fixed;
-  top: 16px;
-  right: 16px;
+  top: ${({ theme }) => theme.spacing.md};
+  right: ${({ theme }) => theme.spacing.md};
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: ${({ theme }) => theme.spacing.sm};
   z-index: 9999;
 `;
 
 export const StyledNotification = styled.div<{ $type: NotifyType }>`
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 16px;
-  border-radius: 4px;
-  background-color: ${({ $type }) => colorMap[$type]};
-  color: white;
-  font-size: 14px;
+  gap: ${({ theme }) => theme.spacing.sm};
+  padding: ${({ theme }) => `${theme.spacing.sm} ${theme.spacing.md}`};
+  border-radius: ${({ theme }) => theme.radius.md};
+  border-left: 3px solid
+    ${({ theme, $type }) =>
+      $type === "success"
+        ? theme.colors.success
+        : $type === "error"
+          ? theme.colors.error
+          : $type === "warning"
+            ? theme.colors.warning
+            : theme.colors.info};
+  background-color: ${({ theme }) => theme.colors.surface};
+  color: ${({ theme }) => theme.colors.foreground};
+  font-family: ${({ theme }) => theme.font.family};
+  font-size: ${({ theme }) => theme.font.size.sm};
   min-width: 280px;
   max-width: 400px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: ${({ theme }) => theme.shadow.md};
 `;
 
 export const StyledNotificationMessage = styled.span`
@@ -39,15 +42,30 @@ export const StyledNotificationMessage = styled.span`
 export const StyledNotificationClose = styled.button`
   background: none;
   border: none;
-  color: white;
+  color: ${({ theme }) => theme.colors.muted};
   cursor: pointer;
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.font.size.md};
   padding: 0;
   line-height: 1;
+  &:hover {
+    color: ${({ theme }) => theme.colors.foreground};
+  }
 `;
 
 export const StyledSvg = styled.svg`
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   flex-shrink: 0;
+`;
+
+export const StyledNotificationIcon = styled.span<{ $type: NotifyType }>`
+  display: inline-flex;
+  color: ${({ theme, $type }) =>
+    $type === "success"
+      ? theme.colors.success
+      : $type === "error"
+        ? theme.colors.error
+        : $type === "warning"
+          ? theme.colors.warning
+          : theme.colors.info};
 `;

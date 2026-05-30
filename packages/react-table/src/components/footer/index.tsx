@@ -13,20 +13,9 @@ export const TableFooter = ({
   <StyledTfoot>
     <StyledTr>
       <StyledTd colSpan={numberOfHeaders}>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            padding: "10px",
-            border: "1px solid #ccc",
-            borderRadius: "5px",
-            backgroundColor: "#f9f9f9",
-            margin: "10px",
-            gap: "10px",
-          }}
-        >
+        <div style={{ display: "flex", alignItems: "center", gap: "0" }}>
           {components.map((component, index) => (
-            <div key={index} style={{ margin: "0 10px" }}>
+            <div key={index}>
               <ComponentRenderer component={component} />
             </div>
           ))}

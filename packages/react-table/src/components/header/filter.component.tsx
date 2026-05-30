@@ -1,29 +1,44 @@
 "use client";
-import type { ChangeEvent } from "react";
-import { StyledFilterContainer, StyledFilterInput } from "../../styled/index.js";
+import { StyledFilterToggleButton } from "../../styled/index.js";
 import type { FilterState } from "../../types/index.js";
 
+const FilterIcon = ({ active }: { active: boolean }) => (
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={active ? 2.5 : 2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+  </svg>
+);
+
 export const Filter = ({
-  field,
   passive,
   filter,
-  setFilter,
+  onToggle,
 }: {
   field: string;
   passive: boolean;
   filter: FilterState;
   setFilter: (filter: FilterState) => void;
+  onToggle?: () => void;
 }) => {
   if (passive) return null;
+
+  const isActive = filter.value !== "";
+
   return (
-    <StyledFilterContainer>
-      <StyledFilterInput
-        type="text"
-        value={filter.value}
-        onChange={({ target }: ChangeEvent<HTMLInputElement>) =>
-          setFilter({ field, value: target.value })
-        }
-      />
-    </StyledFilterContainer>
+    <StyledFilterToggleButton
+      $active={isActive}
+      onClick={onToggle}
+      title={isActive ? "Filter active" : "Filter"}
+    >
+      <FilterIcon active={isActive} />
+    </StyledFilterToggleButton>
   );
 };

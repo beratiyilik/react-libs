@@ -19,6 +19,7 @@ export type TableOptions<T extends Record<string, unknown>> = {
   fieldOptions: FieldOption<T>[];
   searchable?: boolean;
   pagination?: boolean;
+  debug?: boolean;
   identifier?: string | ((row: T) => (value: T) => boolean);
   headerComponents?: ReactNode[];
   footerComponents?: ReactNode[];

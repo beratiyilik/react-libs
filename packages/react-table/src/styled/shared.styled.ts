@@ -1,180 +1,170 @@
 import { styled } from "styled-components";
 
-export const StyledToggleSwitchLabel = styled.label`
-  position: relative;
-  display: inline-block;
-  width: 45px;
-  height: 25.5px;
-`;
-
-export const StyledToggleSwitchInput = styled.input`
-  opacity: 0;
-  width: 0;
-  height: 0;
-`;
-
-export const StyledToggleSwitchSlider = styled.span<{ $checked: boolean }>`
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: ${({ $checked }) => ($checked ? "#2196F3" : "#ccc")};
-  transition: 0.4s;
-  border-radius: 25.5px;
-
-  &:before {
-    position: absolute;
-    content: "";
-    height: 19.5px;
-    width: 19.5px;
-    left: ${({ $checked }) => ($checked ? "4px" : "21.5px")};
-    bottom: 3px;
-    background-color: white;
-    transition: 0.4s;
-    border-radius: 50%;
-  }
-`;
-
-export const StyledSearchBoxContainer = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  width: fit-content;
-`;
-
-export const StyledSearchBoxLabel = styled.label`
-  font-size: 16px;
-  color: #333;
-  margin-right: 10px;
-  flex: 1;
-`;
-
-export const StyledSearchBoxInput = styled.input`
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-  flex: 4;
-`;
-
 export const StyledPaginationContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  height: 110%;
+  gap: ${({ theme }) => theme.spacing.sm};
+  padding: ${({ theme }) => `${theme.spacing.xs} ${theme.spacing.md}`};
 `;
 
 export const StyledPaginationButton = styled.button`
-  padding: 8px 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: ${({ theme }) => theme.radius.md};
+  background-color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.foreground};
+  font-family: ${({ theme }) => theme.font.family};
+  font-size: ${({ theme }) => theme.font.size.sm};
   cursor: pointer;
-
-  &:disabled {
-    color: #aaa;
-    cursor: not-allowed;
-    background-color: #f5f5f5;
+  transition: background-color 150ms ease;
+  &:hover:not(:disabled) {
+    background-color: ${({ theme }) => theme.colors.surface};
   }
-
-  &:not(:disabled) {
-    background-color: #e7e7e7;
-    &:hover {
-      background-color: #d4d4d4;
-    }
+  &:disabled {
+    color: ${({ theme }) => theme.colors.muted};
+    cursor: not-allowed;
+    background-color: ${({ theme }) => theme.colors.surface};
   }
 `;
 
 export const StyledPaginationSelect = styled.select`
-  padding: 8px 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: white;
+  padding: ${({ theme }) => `${theme.spacing.xs} ${theme.spacing.sm}`};
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: ${({ theme }) => theme.radius.md};
+  background-color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.foreground};
+  font-family: ${({ theme }) => theme.font.family};
+  font-size: ${({ theme }) => theme.font.size.sm};
+  cursor: pointer;
+  height: 1.75rem;
 `;
 
 export const StyledPaginationPageInfo = styled.span`
-  padding: 8px 10px;
+  font-family: ${({ theme }) => theme.font.family};
+  font-size: ${({ theme }) => theme.font.size.sm};
+  color: ${({ theme }) => theme.colors.muted};
+  white-space: nowrap;
 `;
 
 export const StyledTableSummaryContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.md};
+  padding: ${({ theme }) => `${theme.spacing.xs} ${theme.spacing.md}`};
 `;
 
-export const StyledTableSummaryRow = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+export const StyledTableSummaryText = styled.span`
+  font-family: ${({ theme }) => theme.font.family};
+  font-size: ${({ theme }) => theme.font.size.sm};
+  color: ${({ theme }) => theme.colors.muted};
 `;
 
-export const StyledTableSummaryColumn = styled.div<{ $content: boolean }>`
-  flex: 1 1 auto;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f5f5f5;
-  display: ${({ $content }) => ($content ? "block" : "none")};
-  min-width: 100px;
-  word-wrap: break-word;
+export const StyledTableSummaryDebug = styled.span`
+  font-family: ${({ theme }) => theme.font.family};
+  font-size: ${({ theme }) => theme.font.size.sm};
+  color: ${({ theme }) => theme.colors.info};
 `;
 
 export const StyledFilterContainer = styled.div`
-  flex: 1;
-  padding: 3px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+`;
+
+export const StyledFilterIconRow = styled.div`
+  display: flex;
   align-items: center;
+  width: 100%;
+`;
+
+export const StyledFilterToggleButton = styled.button<{ $active: boolean }>`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: ${({ theme, $active }) => ($active ? theme.colors.primary : theme.colors.muted)};
+  transition: color 150ms ease;
+  flex-shrink: 0;
+  &:hover {
+    color: ${({ theme, $active }) => ($active ? theme.colors.primary : theme.colors.foreground)};
+  }
+`;
+
+export const StyledFilterInputWrapper = styled.div`
+  margin-top: ${({ theme }) => theme.spacing.xs};
+  width: 100%;
 `;
 
 export const StyledFilterInput = styled.input`
-  padding: 6px;
-  margin: 4px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 70%;
-  font-size: 14px;
+  width: 100%;
+  height: 1.5rem;
+  padding: ${({ theme }) => `0 ${theme.spacing.sm}`};
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: ${({ theme }) => theme.radius.sm};
+  background-color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.foreground};
+  font-family: ${({ theme }) => theme.font.family};
+  font-size: ${({ theme }) => theme.font.size.sm};
+  outline: none;
+  box-sizing: border-box;
+  &::placeholder {
+    color: ${({ theme }) => theme.colors.muted};
+  }
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.primary};
+  }
 `;
 
 export const StyledSortButton = styled.button`
-  padding: 6px 10px;
-  margin: 2px;
-  border: none;
-  border-radius: 4px;
-  background-color: transparent;
-  cursor: pointer;
-  font-size: 14px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-
+  padding: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: none;
+  border-radius: ${({ theme }) => theme.radius.sm};
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.muted};
+  font-family: ${({ theme }) => theme.font.family};
+  font-size: ${({ theme }) => theme.font.size.sm};
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color 150ms ease;
   &:hover {
-    background-color: #f0f0f0;
+    color: ${({ theme }) => theme.colors.foreground};
   }
 `;
 
 export const StyledHeaderContainer = styled.div`
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `;
 
 export const StyledSortAndNameContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: ${({ theme }) => theme.spacing.xs};
   width: 100%;
 `;
 
 export const StyledHeaderName = styled.span`
-  font-weight: bold;
-  font-size: 14px;
+  font-family: ${({ theme }) => theme.font.family};
+  font-size: ${({ theme }) => theme.font.size.sm};
+  font-weight: ${({ theme }) => theme.font.weight.semibold};
+  color: ${({ theme }) => theme.colors.foreground};
   flex: 1;
-  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;

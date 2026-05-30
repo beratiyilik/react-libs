@@ -1,7 +1,7 @@
 "use client";
 import { useMemo } from "react";
 import { useTable } from "../../context/table.context.js";
-import { StyledTbody } from "../../styled/index.js";
+import { StyledTbody, StyledTr, StyledEmptyState } from "../../styled/index.js";
 import { BodyRow } from "../body/index.js";
 
 export const BodySection = () => {
@@ -24,6 +24,16 @@ export const BodySection = () => {
       )),
     [processedData, fieldOptions, toggle, isSelected],
   );
+
+  if (processedData.length === 0) {
+    return (
+      <StyledTbody>
+        <StyledTr>
+          <StyledEmptyState colSpan={fieldOptions.length}>No records found</StyledEmptyState>
+        </StyledTr>
+      </StyledTbody>
+    );
+  }
 
   return <StyledTbody>{memoizedBody}</StyledTbody>;
 };

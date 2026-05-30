@@ -6,9 +6,8 @@ import { TableSummary, Pagination } from "../shared.components.js";
 
 export const FooterSection = () => {
   const {
-    options: { fieldOptions, pagination: hasPagination, footerComponents = [] },
+    options: { fieldOptions, pagination: hasPagination, debug = false, footerComponents = [] },
     data,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     search: { searchTerm, data: searchedData },
     filters: { filters, data: filteredData },
     sort: { sort },
@@ -33,6 +32,7 @@ export const FooterSection = () => {
     () => (
       <TableSummary
         passive={false}
+        debug={debug}
         fieldOptions={fieldOptions}
         data={data}
         searchTerm={searchTerm}
@@ -41,8 +41,10 @@ export const FooterSection = () => {
         lengthOfFilteredData={filteredData.length}
       />
     ),
-    [fieldOptions, data, searchTerm, filters, sort, filteredData.length],
+    [debug, fieldOptions, data, searchTerm, filters, sort, filteredData.length],
   );
+
+  void searchedData;
 
   return (
     <TableFooter
