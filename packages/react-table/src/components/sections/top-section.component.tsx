@@ -2,7 +2,14 @@
 import { useMemo } from "react";
 import { useTable } from "../../context/table.context.js";
 import { SearchBox, ComponentRenderer, Pagination } from "../shared.components.js";
-import { StyledCaption, StyledColgroup, StyledCol } from "../../styled/index.js";
+import {
+  StyledCaption,
+  StyledCaptionInner,
+  StyledCaptionName,
+  StyledCaptionActions,
+  StyledColgroup,
+  StyledCol,
+} from "../../styled/index.js";
 
 export const TopSection = () => {
   const {
@@ -35,23 +42,14 @@ export const TopSection = () => {
   return (
     <>
       <StyledCaption>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            margin: "10px",
-          }}
-        >
-          <div>{name}</div>
-          <div style={{ display: "flex", alignItems: "center" }}>
+        <StyledCaptionInner>
+          <StyledCaptionName>{name}</StyledCaptionName>
+          <StyledCaptionActions>
             {components.map((component, index) => (
-              <div key={index} style={{ margin: "0 10px" }}>
-                <ComponentRenderer component={component} />
-              </div>
+              <ComponentRenderer key={index} component={component} />
             ))}
-          </div>
-        </div>
+          </StyledCaptionActions>
+        </StyledCaptionInner>
       </StyledCaption>
       <StyledColgroup>
         {fieldOptions.map(({ width, color }, index) => (

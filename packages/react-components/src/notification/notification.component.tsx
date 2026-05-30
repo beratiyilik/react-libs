@@ -3,6 +3,7 @@ import type { Notification } from "./notification.types.js";
 import { NotifyTypes } from "./notification.constants.js";
 import {
   StyledNotification,
+  StyledNotificationIcon,
   StyledNotificationMessage,
   StyledNotificationClose,
 } from "./notification.styled.js";
@@ -19,7 +20,9 @@ export const NotificationItem = ({ message, type, hide }: Notification) => {
   const Icon = iconMap[type];
   return (
     <StyledNotification $type={type}>
-      <Icon />
+      <StyledNotificationIcon $type={type}>
+        <Icon />
+      </StyledNotificationIcon>
       <StyledNotificationMessage>{message}</StyledNotificationMessage>
       <StyledNotificationClose onClick={hide}>✕</StyledNotificationClose>
     </StyledNotification>

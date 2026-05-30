@@ -1,5 +1,16 @@
 # @beratiyilik/react-table
 
+## 0.1.0-alpha.2
+
+### Minor Changes
+
+- refactor: filter toggle with inline input, pagination disabled fix, empty state for no records, debug mode for table footer, shared styled architecture, ToggleSwitch/SearchBox imported from react-components
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @beratiyilik/react-components@0.1.0-alpha.2
+
 ## 0.1.0-alpha.1
 
 ### Minor Changes

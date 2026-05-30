@@ -1,58 +1,19 @@
 "use client";
 import type { ChangeEvent, ReactNode } from "react";
+import { ToggleSwitch, SearchBox } from "@beratiyilik/react-components";
 import {
-  StyledToggleSwitchLabel,
-  StyledToggleSwitchInput,
-  StyledToggleSwitchSlider,
-  StyledSearchBoxContainer,
-  StyledSearchBoxLabel,
-  StyledSearchBoxInput,
   StyledPaginationContainer,
   StyledPaginationButton,
   StyledPaginationSelect,
   StyledPaginationPageInfo,
   StyledTableSummaryContainer,
-  StyledTableSummaryRow,
-  StyledTableSummaryColumn,
+  StyledTableSummaryText,
+  StyledTableSummaryDebug,
 } from "../styled/index.js";
 import { PAGE_SIZE_OPTIONS } from "../hooks/index.js";
 import type { FilterState, SortState, FieldOption } from "../types/index.js";
 
-export const ToggleSwitch = ({
-  selected,
-  onChange,
-}: {
-  selected: boolean;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-}) => (
-  <StyledToggleSwitchLabel>
-    <StyledToggleSwitchInput type="checkbox" checked={selected} onChange={onChange} />
-    <StyledToggleSwitchSlider $checked={selected} />
-  </StyledToggleSwitchLabel>
-);
-
-export const SearchBox = ({
-  passive,
-  searchTerm,
-  setSearchTerm,
-}: {
-  passive: boolean;
-  searchTerm: string;
-  setSearchTerm: (v: string) => void;
-}) => {
-  if (passive) return null;
-  return (
-    <StyledSearchBoxContainer>
-      <StyledSearchBoxLabel htmlFor="search">Search</StyledSearchBoxLabel>
-      <StyledSearchBoxInput
-        id="search"
-        type="text"
-        value={searchTerm}
-        onChange={({ target }: ChangeEvent<HTMLInputElement>) => setSearchTerm(target.value)}
-      />
-    </StyledSearchBoxContainer>
-  );
-};
+export { ToggleSwitch, SearchBox };
 
 export const Pagination = ({
   passive,
@@ -74,15 +35,15 @@ export const Pagination = ({
     <StyledPaginationContainer>
       <StyledPaginationButton
         disabled={currentPage <= 1}
-        onClick={() => setCurrentPage(currentPage - 1)}
+        onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
       >
-        Previous
+        ‹
       </StyledPaginationButton>
       <StyledPaginationButton
         disabled={currentPage >= totalPages}
-        onClick={() => setCurrentPage(currentPage + 1)}
+        onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
       >
-        Next
+        ›
       </StyledPaginationButton>
       <StyledPaginationSelect
         value={pageSize}
@@ -105,6 +66,7 @@ export const Pagination = ({
 
 export const TableSummary = <T extends Record<string, unknown>>({
   passive,
+  debug = false,
   fieldOptions,
   data,
   searchTerm,
@@ -113,6 +75,7 @@ export const TableSummary = <T extends Record<string, unknown>>({
   lengthOfFilteredData,
 }: {
   passive: boolean;
+  debug?: boolean;
   fieldOptions: FieldOption<T>[];
   data: T[];
   searchTerm: string;
@@ -121,6 +84,9 @@ export const TableSummary = <T extends Record<string, unknown>>({
   lengthOfFilteredData: number;
 }) => {
   if (passive) return null;
+
+  const hasActiveFilters = filters.length > 0 || searchTerm !== "";
+  const shownCount = hasActiveFilters ? lengthOfFilteredData : data.length;
 
   const getFilterHeaderName = (fn: string) =>
     fieldOptions.find(({ fieldName, filterFieldName }) =>
@@ -134,34 +100,27 @@ export const TableSummary = <T extends Record<string, unknown>>({
 
   const filterMessage =
     filters.length > 0
-      ? filters.map(({ field, value }) => `${getFilterHeaderName(field)}: ${value}`).join(" and ")
+      ? filters.map(({ field, value }) => `${getFilterHeaderName(field)}: ${value}`).join(", ")
       : "";
 
-  const sortMessage = sort.field
-    ? `Sorted by ${getSortedHeaderName(sort.field)} ${sort.direction}`
-    : "";
+  const sortMessage = sort.field ? `${getSortedHeaderName(sort.field)} ${sort.direction}` : "";
 
   return (
     <StyledTableSummaryContainer>
-      <StyledTableSummaryRow>
-        <StyledTableSummaryColumn $content={true}>
-          Total {data.length} rows
-        </StyledTableSummaryColumn>
-        <StyledTableSummaryColumn $content={filters.length > 0}>
-          {filters.length > 0 && `(${lengthOfFilteredData} rows after filter and search)`}
-        </StyledTableSummaryColumn>
-        <StyledTableSummaryColumn $content={searchTerm !== ""}>
-          {searchTerm !== "" ? `Searched for ${searchTerm}` : ""}
-        </StyledTableSummaryColumn>
-      </StyledTableSummaryRow>
-      <StyledTableSummaryRow>
-        <StyledTableSummaryColumn $content={filterMessage !== ""}>
-          {filterMessage !== "" ? `Filtered by ${filterMessage}` : ""}
-        </StyledTableSummaryColumn>
-        <StyledTableSummaryColumn $content={sortMessage !== ""}>
-          {sortMessage}
-        </StyledTableSummaryColumn>
-      </StyledTableSummaryRow>
+      <StyledTableSummaryText>
+        {hasActiveFilters
+          ? `Showing ${shownCount} of ${data.length} records`
+          : `${data.length} records`}
+      </StyledTableSummaryText>
+      {debug && filterMessage !== "" && (
+        <StyledTableSummaryDebug>Filtered by {filterMessage}</StyledTableSummaryDebug>
+      )}
+      {debug && searchTerm !== "" && (
+        <StyledTableSummaryDebug>Search: {searchTerm}</StyledTableSummaryDebug>
+      )}
+      {debug && sortMessage !== "" && (
+        <StyledTableSummaryDebug>Sort: {sortMessage}</StyledTableSummaryDebug>
+      )}
     </StyledTableSummaryContainer>
   );
 };

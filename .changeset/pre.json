@@ -3,7 +3,8 @@
   "tag": "alpha",
   "initialVersions": {
     "@beratiyilik/react-components": "0.0.0",
-    "@beratiyilik/react-table": "0.0.0"
+    "@beratiyilik/react-table": "0.0.0",
+    "@repo/storybook": "0.0.0"
   },
-  "changesets": ["funny-deserts-relate", "pink-laws-drive"]
+  "changesets": ["bumpy-files-relate", "light-plums-know"]
 }

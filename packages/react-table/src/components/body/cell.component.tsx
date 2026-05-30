@@ -16,14 +16,12 @@ export const BodyCell = <T extends Record<string, unknown>>({
   isSelected: (row: T) => boolean;
 }) => {
   const { fieldName, headerName, render, selection } = fieldOption;
-
   if (selection)
     return (
       <StyledTd data-label={headerName ?? fieldName}>
-        <ToggleSwitch selected={isSelected(row)} onChange={() => toggle(row)} />
+        <ToggleSwitch selected={isSelected(row)} onChange={() => toggle(row)} size="sm" />
       </StyledTd>
     );
-
   return (
     <StyledTd data-label={headerName ?? fieldName}>
       <ComponentRenderer

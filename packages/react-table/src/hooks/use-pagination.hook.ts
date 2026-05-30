@@ -18,18 +18,21 @@ export const usePagination = <T extends Record<string, unknown>>(data: T[]) => {
   const [currentPage, setCurrentPage] = useState(DEFAULT_PAGE);
   const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
 
-  const debouncedCurrentPage = useDebounce(currentPage, 500);
+  const totalPages = useMemo(
+    () => Math.max(1, Math.ceil(data.length / pageSize)),
+    [data.length, pageSize],
+  );
+
+  const debouncedCurrentPage = useDebounce(currentPage, 150);
 
   const paginatedData = useMemo(() => {
     const startIndex = (debouncedCurrentPage - 1) * pageSize;
     return data.slice(startIndex, startIndex + pageSize);
   }, [data, debouncedCurrentPage, pageSize]);
 
-  const totalPages = useMemo(() => Math.ceil(data.length / pageSize), [data.length, pageSize]);
-
   useEffect(() => {
-    if (data.length < currentPage * pageSize) setCurrentPage(DEFAULT_PAGE);
-  }, [data.length, currentPage, pageSize]);
+    if (currentPage > totalPages) setCurrentPage(DEFAULT_PAGE);
+  }, [currentPage, totalPages]);
 
   return {
     currentPage,

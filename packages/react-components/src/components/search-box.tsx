@@ -1,6 +1,10 @@
 "use client";
-import { styled } from "styled-components";
 import type { ChangeEvent } from "react";
+import {
+  StyledSearchBoxContainer,
+  StyledSearchBoxLabel,
+  StyledSearchBoxInput,
+} from "./search-box.styled.js";
 
 export type SearchBoxProps = {
   searchTerm: string;
@@ -8,42 +12,17 @@ export type SearchBoxProps = {
   passive?: boolean;
 };
 
-const StyledContainer = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  width: fit-content;
-`;
-
-const StyledLabel = styled.label`
-  font-size: 16px;
-  color: #333;
-  margin-right: 10px;
-  flex: 1;
-`;
-
-const StyledInput = styled.input`
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-  flex: 4;
-`;
-
 export const SearchBox = ({ searchTerm, setSearchTerm, passive = false }: SearchBoxProps) => {
   if (passive) return null;
   return (
-    <StyledContainer>
-      <StyledLabel htmlFor="search">Search</StyledLabel>
-      <StyledInput
+    <StyledSearchBoxContainer>
+      <StyledSearchBoxLabel htmlFor="search">Search</StyledSearchBoxLabel>
+      <StyledSearchBoxInput
         id="search"
         type="text"
         value={searchTerm}
         onChange={({ target }: ChangeEvent<HTMLInputElement>) => setSearchTerm(target.value)}
       />
-    </StyledContainer>
+    </StyledSearchBoxContainer>
   );
 };
