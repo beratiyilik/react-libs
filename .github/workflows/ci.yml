@@ -1,10 +1,8 @@
 name: CI
-
 on:
   push:
     branches: [main]
   pull_request:
-
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -23,3 +21,4 @@ jobs:
       - run: pnpm test
       - run: pnpm build
       - run: pnpm check
+      - run: pnpm storybook:build

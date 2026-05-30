@@ -1,8 +1,7 @@
 import js from "@eslint/js";
 import tseslint from "typescript-eslint";
-
 export default tseslint.config(
-  { ignores: ["**/dist/**", "**/node_modules/**", "**/.turbo/**"] },
+  { ignores: ["**/dist/**", "**/node_modules/**", "**/.turbo/**", "**/storybook-static/**"] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
@@ -20,5 +19,9 @@ export default tseslint.config(
         },
       ],
     },
+  },
+  {
+    files: ["apps/storybook/src/**/*.{ts,tsx}", "apps/storybook/.storybook/**/*.{ts,tsx}"],
+    rules: {},
   },
 );

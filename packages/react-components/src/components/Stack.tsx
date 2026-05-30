@@ -18,10 +18,6 @@ const StyledStack = styled.div<{ $direction: StackDirection; $gap: StackGap }>`
   gap: ${({ theme, $gap }) => theme.spacing[$gap]};
 `;
 
-export const Stack = ({
-  direction = "column",
-  gap = "md",
-  ...rest
-}: StackProps) => {
+export const Stack = ({ direction = "column", gap = "md", ...rest }: StackProps) => {
   return <StyledStack $direction={direction} $gap={gap} {...rest} />;
 };

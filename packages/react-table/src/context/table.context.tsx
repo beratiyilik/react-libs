@@ -1,10 +1,5 @@
 "use client";
-import {
-  createContext,
-  useContext,
-  useMemo,
-  type ReactNode,
-} from "react";
+import { createContext, useContext, useMemo, type ReactNode } from "react";
 import { useSearch } from "../hooks/use-search.hook.js";
 import { useFilters } from "../hooks/use-filters.hook.js";
 import { useSort } from "../hooks/use-sort.hook.js";
@@ -16,8 +11,16 @@ type TableContextValue<T extends Record<string, unknown>> = {
   options: TableOptions<T>;
   data: T[];
   search: { searchTerm: string; setSearchTerm: (v: string) => void; data: T[] };
-  filters: { filters: FilterState[]; setFilters: React.Dispatch<React.SetStateAction<FilterState[]>>; data: T[] };
-  sort: { sort: Partial<SortState>; setSort: React.Dispatch<React.SetStateAction<Partial<SortState>>>; data: T[] };
+  filters: {
+    filters: FilterState[];
+    setFilters: React.Dispatch<React.SetStateAction<FilterState[]>>;
+    data: T[];
+  };
+  sort: {
+    sort: Partial<SortState>;
+    setSort: React.Dispatch<React.SetStateAction<Partial<SortState>>>;
+    data: T[];
+  };
   pagination: {
     currentPage: number;
     setCurrentPage: (page: number) => void;
@@ -86,11 +89,7 @@ export const TableProvider = <T extends Record<string, unknown>>({
     processedData: pagination.data,
   } as unknown as TableContextValue<Record<string, unknown>>;
 
-  return (
-    <TableContext.Provider value={value}>
-      {children}
-    </TableContext.Provider>
-  );
+  return <TableContext.Provider value={value}>{children}</TableContext.Provider>;
 };
 
 const getPredictiveIdentifier = <T extends Record<string, unknown>>(

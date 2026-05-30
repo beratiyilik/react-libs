@@ -1,9 +1,6 @@
 "use client";
 import type { ChangeEvent } from "react";
-import {
-  StyledFilterContainer,
-  StyledFilterInput,
-} from "../../styled/index.js";
+import { StyledFilterContainer, StyledFilterInput } from "../../styled/index.js";
 import type { FilterState } from "../../types/index.js";
 
 export const Filter = ({

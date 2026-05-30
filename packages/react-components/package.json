@@ -2,6 +2,13 @@
   "name": "@beratiyilik/react-components",
   "version": "0.1.0-alpha.1",
   "description": "React component library built with styled-components",
+  "keywords": [
+    "react",
+    "components",
+    "styled-components",
+    "typescript",
+    "ui"
+  ],
   "type": "module",
   "sideEffects": false,
   "exports": {

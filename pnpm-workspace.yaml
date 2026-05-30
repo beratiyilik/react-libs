@@ -1,6 +1,9 @@
 packages:
   - "packages/*"
+  - "apps/*"
+allowBuilds:
+  esbuild: true
 minimumReleaseAgeExclude:
-  - '@beratiyilik/*'
-  - '@arethetypeswrong/cli@0.18.3'
-  - '@arethetypeswrong/core@0.18.3'
+  - "@beratiyilik/*"
+  - "@arethetypeswrong/cli@0.18.3"
+  - "@arethetypeswrong/core@0.18.3"

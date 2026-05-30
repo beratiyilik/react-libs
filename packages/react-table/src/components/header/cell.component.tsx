@@ -49,12 +49,7 @@ export const HeaderCell = <T extends Record<string, unknown>>({
       <StyledHeaderContainer>
         <StyledSortAndNameContainer>
           <StyledHeaderName>{headerName ?? fieldName}</StyledHeaderName>
-          <Sort
-            field={_sortFieldName}
-            passive={!sortable}
-            sort={sort}
-            setSort={setSort}
-          />
+          <Sort field={_sortFieldName} passive={!sortable} sort={sort} setSort={setSort} />
         </StyledSortAndNameContainer>
         <Filter
           field={_filterFieldName}

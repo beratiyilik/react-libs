@@ -15,6 +15,15 @@
     "typecheck": { "dependsOn": ["^build"] },
     "check:publint": { "dependsOn": ["^build"] },
     "check:attw": { "dependsOn": ["^build"] },
+    "storybook:dev": {
+      "dependsOn": ["^build"],
+      "persistent": true,
+      "cache": false
+    },
+    "storybook:build": {
+      "dependsOn": ["^build"],
+      "outputs": ["storybook-static/**"]
+    },
     "clean": {
       "cache": false
     }
