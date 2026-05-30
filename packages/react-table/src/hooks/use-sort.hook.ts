@@ -12,10 +12,7 @@ export const useSort = <T extends Record<string, unknown>>(data: T[]) => {
     return [...data].sort((a, b) => {
       const fieldA = a[debouncedSort.field!] as string | number;
       const fieldB = b[debouncedSort.field!] as string | number;
-      return (
-        (fieldA < fieldB ? -1 : 1) *
-        (debouncedSort.direction === "asc" ? 1 : -1)
-      );
+      return (fieldA < fieldB ? -1 : 1) * (debouncedSort.direction === "asc" ? 1 : -1);
     });
   }, [data, debouncedSort]);
 

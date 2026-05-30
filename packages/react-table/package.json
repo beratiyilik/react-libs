@@ -2,6 +2,14 @@
   "name": "@beratiyilik/react-table",
   "version": "0.1.0-alpha.1",
   "description": "React table component built on react-components",
+  "keywords": [
+    "react",
+    "table",
+    "components",
+    "styled-components",
+    "typescript",
+    "ui"
+  ],
   "type": "module",
   "sideEffects": false,
   "exports": {

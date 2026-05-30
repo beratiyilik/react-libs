@@ -25,10 +25,7 @@ export const usePagination = <T extends Record<string, unknown>>(data: T[]) => {
     return data.slice(startIndex, startIndex + pageSize);
   }, [data, debouncedCurrentPage, pageSize]);
 
-  const totalPages = useMemo(
-    () => Math.ceil(data.length / pageSize),
-    [data.length, pageSize],
-  );
+  const totalPages = useMemo(() => Math.ceil(data.length / pageSize), [data.length, pageSize]);
 
   useEffect(() => {
     if (data.length < currentPage * pageSize) setCurrentPage(DEFAULT_PAGE);

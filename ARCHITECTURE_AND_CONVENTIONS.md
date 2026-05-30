@@ -28,10 +28,10 @@
 
 ### Packages
 
-| package | depends on |
-| --- | --- |
-| `react-components` | `browser-utils`, `ts-utils` |
-| `react-table` | `react-components`, `fuse.js` |
+| package            | depends on                    |
+| ------------------ | ----------------------------- |
+| `react-components` | `browser-utils`, `ts-utils`   |
+| `react-table`      | `react-components`, `fuse.js` |
 
 `react-components` and `react-table` consume `ts-libs` packages via npm (published versions). `react-table` receives `ts-utils` and `browser-utils` transitively through `react-components`.
 

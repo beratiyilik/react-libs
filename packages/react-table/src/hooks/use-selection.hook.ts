@@ -3,9 +3,10 @@ import { useDebounce } from "@beratiyilik/react-components";
 
 type PredictiveIdentifier<T> = (row: T) => (value: T) => boolean;
 
-const DEFAULT_PREDICTIVE_IDENTIFIER = <T extends Record<string, unknown>>(
-  row: T,
-) => (value: T) => value["id"] === row["id"];
+const DEFAULT_PREDICTIVE_IDENTIFIER =
+  <T extends Record<string, unknown>>(row: T) =>
+  (value: T) =>
+    value["id"] === row["id"];
 
 export const useSelection = <T extends Record<string, unknown>>(
   data: T[],
@@ -18,14 +19,11 @@ export const useSelection = <T extends Record<string, unknown>>(
   const toggle = (row: T) => {
     const index = selectedRows.findIndex(predictiveIdentifier(row));
     const newSelectedRows =
-      index === -1
-        ? [...selectedRows, row]
-        : selectedRows.filter((_, i) => i !== index);
+      index === -1 ? [...selectedRows, row] : selectedRows.filter((_, i) => i !== index);
     setSelectedRows(newSelectedRows);
   };
 
-  const isSelected = (row: T) =>
-    debouncedSelectedRows.some(predictiveIdentifier(row));
+  const isSelected = (row: T) => debouncedSelectedRows.some(predictiveIdentifier(row));
 
   const isSelectedAll = data.length > 0 && data.every(isSelected);
 

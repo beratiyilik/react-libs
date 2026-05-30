@@ -20,10 +20,7 @@ export const BodyCell = <T extends Record<string, unknown>>({
   if (selection)
     return (
       <StyledTd data-label={headerName ?? fieldName}>
-        <ToggleSwitch
-          selected={isSelected(row)}
-          onChange={() => toggle(row)}
-        />
+        <ToggleSwitch selected={isSelected(row)} onChange={() => toggle(row)} />
       </StyledTd>
     );
 

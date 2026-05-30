@@ -26,11 +26,7 @@ export const ToggleSwitch = ({
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }) => (
   <StyledToggleSwitchLabel>
-    <StyledToggleSwitchInput
-      type="checkbox"
-      checked={selected}
-      onChange={onChange}
-    />
+    <StyledToggleSwitchInput type="checkbox" checked={selected} onChange={onChange} />
     <StyledToggleSwitchSlider $checked={selected} />
   </StyledToggleSwitchLabel>
 );
@@ -52,9 +48,7 @@ export const SearchBox = ({
         id="search"
         type="text"
         value={searchTerm}
-        onChange={({ target }: ChangeEvent<HTMLInputElement>) =>
-          setSearchTerm(target.value)
-        }
+        onChange={({ target }: ChangeEvent<HTMLInputElement>) => setSearchTerm(target.value)}
       />
     </StyledSearchBoxContainer>
   );
@@ -140,9 +134,7 @@ export const TableSummary = <T extends Record<string, unknown>>({
 
   const filterMessage =
     filters.length > 0
-      ? filters
-          .map(({ field, value }) => `${getFilterHeaderName(field)}: ${value}`)
-          .join(" and ")
+      ? filters.map(({ field, value }) => `${getFilterHeaderName(field)}: ${value}`).join(" and ")
       : "";
 
   const sortMessage = sort.field
@@ -156,8 +148,7 @@ export const TableSummary = <T extends Record<string, unknown>>({
           Total {data.length} rows
         </StyledTableSummaryColumn>
         <StyledTableSummaryColumn $content={filters.length > 0}>
-          {filters.length > 0 &&
-            `(${lengthOfFilteredData} rows after filter and search)`}
+          {filters.length > 0 && `(${lengthOfFilteredData} rows after filter and search)`}
         </StyledTableSummaryColumn>
         <StyledTableSummaryColumn $content={searchTerm !== ""}>
           {searchTerm !== "" ? `Searched for ${searchTerm}` : ""}

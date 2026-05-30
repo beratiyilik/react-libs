@@ -28,7 +28,9 @@
     "changeset": "changeset",
     "version": "changeset version",
     "release": "turbo run build && changeset publish",
-    "prepare": "husky"
+    "prepare": "husky",
+    "storybook:dev": "turbo run storybook:dev",
+    "storybook:build": "turbo run storybook:build"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.7.0",

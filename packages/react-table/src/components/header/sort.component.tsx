@@ -20,8 +20,7 @@ export const Sort = ({
       onClick={() =>
         setSort({
           field,
-          direction:
-            sort.field === field && sort.direction === "asc" ? "desc" : "asc",
+          direction: sort.field === field && sort.direction === "asc" ? "desc" : "asc",
         })
       }
     >

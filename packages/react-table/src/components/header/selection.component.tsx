@@ -11,10 +11,5 @@ export const HeaderSelection = ({
   isAllSelected: boolean;
 }) => {
   if (passive) return null;
-  return (
-    <ToggleSwitch
-      selected={isAllSelected}
-      onChange={toggleAll}
-    />
-  );
+  return <ToggleSwitch selected={isAllSelected} onChange={toggleAll} />;
 };

@@ -24,16 +24,14 @@ describe("useLocalStorage", () => {
   });
 
   it("supports object values", () => {
-    const { result } = renderHook(() =>
-      useLocalStorage<{ a: number }>("key", { a: 1 }),
-    );
+    const { result } = renderHook(() => useLocalStorage<{ a: number }>("key", { a: 1 }));
     act(() => result.current[1]({ a: 42 }));
     expect(result.current[0]).toEqual({ a: 42 });
   });
 
   it("throws when key is empty", () => {
-    expect(() =>
-      renderHook(() => useLocalStorage("", "value")),
-    ).toThrow("useLocalStorage key may not be falsy");
+    expect(() => renderHook(() => useLocalStorage("", "value"))).toThrow(
+      "useLocalStorage key may not be falsy",
+    );
   });
 });

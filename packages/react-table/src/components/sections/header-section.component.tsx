@@ -14,13 +14,7 @@ export const HeaderSection = () => {
   } = useTable();
 
   const memoizedHeaderSelection = useMemo(
-    () => (
-      <HeaderSelection
-        passive={false}
-        toggleAll={toggleAll}
-        isAllSelected={isSelectedAll}
-      />
-    ),
+    () => <HeaderSelection passive={false} toggleAll={toggleAll} isAllSelected={isSelectedAll} />,
     [toggleAll, isSelectedAll],
   );
 

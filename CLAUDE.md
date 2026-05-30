@@ -65,9 +65,11 @@ Turbo task order: `build` depends on `^build` (upstream first), `test`/`typechec
 `Table<T>` is a generic component that accepts `options: TableOptions<T>` and `data: T[]`.
 
 **Data pipeline** (inside `TableProvider`):
+
 ```
 raw data → useSearch (fuse.js fuzzy, debounced) → useFilters (per-field) → useSort → usePagination → processedData
 ```
+
 Selection state (`useSelection`) operates on the original `data` array, not the processed slice.
 
 All state lives in `TableContext`. Sub-components (`HeaderSection`, `BodySection`, `FooterSection`, `TopSection`) consume it via `useTable()`. Never pass data as props between sub-components — always go through context.
@@ -77,6 +79,7 @@ All state lives in `TableContext`. Sub-components (`HeaderSection`, `BodySection
 ### TypeScript config
 
 All packages extend `tsconfig.base.json`:
+
 - `target: ES2024`, `module: NodeNext`, `moduleResolution: NodeNext`
 - `strict` + `noUncheckedIndexedAccess` + `exactOptionalPropertyTypes` + `verbatimModuleSyntax`
 - `esModuleInterop: false` — use named imports everywhere
