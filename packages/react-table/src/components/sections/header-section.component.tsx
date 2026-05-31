@@ -10,12 +10,21 @@ export const HeaderSection = () => {
     options: { fieldOptions },
     filters: { filters, setFilters },
     sort: { sort, setSort },
-    selection: { toggleAll, isSelectedAll },
+    selection: { toggleAll, isSelectedAll, data: selectedRows },
   } = useTable();
 
+  const isPartiallySelected = selectedRows.length > 0 && !isSelectedAll;
+
   const memoizedHeaderSelection = useMemo(
-    () => <HeaderSelection passive={false} toggleAll={toggleAll} isAllSelected={isSelectedAll} />,
-    [toggleAll, isSelectedAll],
+    () => (
+      <HeaderSelection
+        passive={false}
+        toggleAll={toggleAll}
+        isAllSelected={isSelectedAll}
+        isPartiallySelected={isPartiallySelected}
+      />
+    ),
+    [toggleAll, isSelectedAll, isPartiallySelected],
   );
 
   return (

@@ -5,11 +5,20 @@ import { useFilters } from "../hooks/use-filters.hook.js";
 import { useSort } from "../hooks/use-sort.hook.js";
 import { usePagination } from "../hooks/use-pagination.hook.js";
 import { useSelection } from "../hooks/use-selection.hook.js";
-import type { TableOptions, SortState, FilterState, SelectionState } from "../types/index.js";
+import type {
+  TableOptions,
+  SortState,
+  FilterState,
+  SelectionState,
+  TableDensity,
+} from "../types/index.js";
 
 type TableContextValue<T extends Record<string, unknown>> = {
   options: TableOptions<T>;
   data: T[];
+  density: TableDensity;
+  loading: boolean;
+  error: ReactNode | undefined;
   search: { searchTerm: string; setSearchTerm: (v: string) => void; data: T[] };
   filters: {
     filters: FilterState[];
@@ -53,7 +62,12 @@ export const TableProvider = <T extends Record<string, unknown>>({
   options,
   data,
 }: TableProviderProps<T>) => {
-  const { pagination: hasPagination = true } = options;
+  const {
+    pagination: hasPagination = true,
+    density = "comfortable",
+    loading = false,
+    error,
+  } = options;
 
   const { data: searchedData, ...restOfSearch } = useSearch(data);
   const { data: filteredData, ...restOfFilters } = useFilters(searchedData);
@@ -81,6 +95,9 @@ export const TableProvider = <T extends Record<string, unknown>>({
   const value = {
     options,
     data,
+    density,
+    loading,
+    error,
     search: { ...restOfSearch, data: searchedData },
     filters: { ...restOfFilters, data: filteredData },
     sort: { ...restOfSort, data: sortedData },

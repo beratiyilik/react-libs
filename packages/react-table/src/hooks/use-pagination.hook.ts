@@ -5,13 +5,12 @@ const DEFAULT_PAGE = 1;
 const DEFAULT_PAGE_SIZE = 10;
 
 export const PAGE_SIZE_OPTIONS = [
+  { value: 5, label: "5" },
   { value: 10, label: "10" },
   { value: 25, label: "25" },
   { value: 50, label: "50" },
   { value: 100, label: "100" },
   { value: 250, label: "250" },
-  { value: 500, label: "500" },
-  { value: 1000, label: "1000" },
 ];
 
 export const usePagination = <T extends Record<string, unknown>>(data: T[]) => {

@@ -8,7 +8,7 @@ type NotificationsProps = {
 };
 
 export const Notifications = ({ notifications }: NotificationsProps) => (
-  <StyledNotificationsContainer>
+  <StyledNotificationsContainer aria-live="polite" aria-atomic="false">
     {notifications.map((notification) => (
       <NotificationItem key={notification.id} {...notification} />
     ))}

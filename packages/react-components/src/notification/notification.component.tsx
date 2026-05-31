@@ -19,7 +19,7 @@ const iconMap = {
 export const NotificationItem = ({ message, type, hide }: Notification) => {
   const Icon = iconMap[type];
   return (
-    <StyledNotification $type={type}>
+    <StyledNotification $type={type} role="alert">
       <StyledNotificationIcon $type={type}>
         <Icon />
       </StyledNotificationIcon>

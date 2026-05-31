@@ -1,5 +1,5 @@
 "use client";
-import type { ChangeEvent } from "react";
+import type { ChangeEvent, LabelHTMLAttributes } from "react";
 import {
   StyledToggleSwitchLabel,
   StyledToggleSwitchInput,
@@ -7,16 +7,24 @@ import {
 } from "./toggle-switch.styled.js";
 
 export type ToggleSwitchSize = "sm" | "md" | "lg";
+export type ToggleSwitchShape = "pill" | "square";
 
-export type ToggleSwitchProps = {
+export type ToggleSwitchProps = Omit<LabelHTMLAttributes<HTMLLabelElement>, "onChange"> & {
   selected: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   size?: ToggleSwitchSize;
+  shape?: ToggleSwitchShape;
 };
 
-export const ToggleSwitch = ({ selected, onChange, size = "md" }: ToggleSwitchProps) => (
-  <StyledToggleSwitchLabel $size={size}>
+export const ToggleSwitch = ({
+  selected,
+  onChange,
+  size = "md",
+  shape = "pill",
+  ...rest
+}: ToggleSwitchProps) => (
+  <StyledToggleSwitchLabel $size={size} {...rest}>
     <StyledToggleSwitchInput type="checkbox" checked={selected} onChange={onChange} />
-    <StyledToggleSwitchSlider $checked={selected} $size={size} />
+    <StyledToggleSwitchSlider $checked={selected} $size={size} $shape={shape} />
   </StyledToggleSwitchLabel>
 );

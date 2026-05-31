@@ -14,6 +14,8 @@ export type FieldOption<T extends Record<string, unknown>> = {
   render?: (row: T) => ReactNode;
 };
 
+export type TableDensity = "compact" | "comfortable" | "spacious";
+
 export type TableOptions<T extends Record<string, unknown>> = {
   name?: string;
   fieldOptions: FieldOption<T>[];
@@ -23,6 +25,9 @@ export type TableOptions<T extends Record<string, unknown>> = {
   identifier?: string | ((row: T) => (value: T) => boolean);
   headerComponents?: ReactNode[];
   footerComponents?: ReactNode[];
+  density?: TableDensity;
+  loading?: boolean;
+  error?: ReactNode;
 };
 
 export type SortState = {

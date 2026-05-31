@@ -1,15 +1,25 @@
 "use client";
-import { ToggleSwitch } from "../shared.components.js";
+import { Checkbox } from "../shared.components.js";
 
 export const HeaderSelection = ({
   passive,
   toggleAll,
   isAllSelected,
+  isPartiallySelected,
 }: {
   passive: boolean;
   toggleAll: () => void;
   isAllSelected: boolean;
+  isPartiallySelected: boolean;
 }) => {
   if (passive) return null;
-  return <ToggleSwitch selected={isAllSelected} onChange={toggleAll} size="sm" />;
+  return (
+    <Checkbox
+      size="sm"
+      checked={isAllSelected}
+      indeterminate={isPartiallySelected}
+      onChange={toggleAll}
+      aria-label="Select all rows"
+    />
+  );
 };

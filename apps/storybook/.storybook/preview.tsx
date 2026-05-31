@@ -1,9 +1,28 @@
 import { definePreview } from "@storybook/react-vite";
 import { parameters as docsParameters } from "@storybook/addon-docs/preview";
 import { ThemeProvider } from "styled-components";
-import { defaultTheme } from "@beratiyilik/react-components";
+import { defaultTheme, darkTheme } from "@beratiyilik/react-components";
+
+const themeMap = {
+  light: defaultTheme,
+  dark: darkTheme,
+} as const;
 
 export default definePreview({
+  globalTypes: {
+    theme: {
+      name: "Theme",
+      defaultValue: "light",
+      toolbar: {
+        icon: "circlehollow",
+        items: [
+          { value: "light", title: "Light", icon: "sun" },
+          { value: "dark", title: "Dark", icon: "moon" },
+        ],
+        dynamicTitle: true,
+      },
+    },
+  },
   parameters: {
     ...docsParameters,
     layout: "centered",
@@ -11,7 +30,7 @@ export default definePreview({
       default: "light",
       values: [
         { name: "light", value: defaultTheme.colors.background },
-        { name: "dark", value: "#111111" },
+        { name: "dark", value: darkTheme.colors.background },
       ],
     },
     viewport: {
@@ -24,10 +43,22 @@ export default definePreview({
     },
   },
   decorators: [
-    (Story) => (
-      <ThemeProvider theme={defaultTheme}>
-        <Story />
-      </ThemeProvider>
-    ),
+    (Story, context) => {
+      const selectedTheme = context.globals["theme"] as keyof typeof themeMap | undefined;
+      const theme = themeMap[selectedTheme ?? "light"] ?? defaultTheme;
+      return (
+        <ThemeProvider theme={theme}>
+          <div
+            style={{
+              backgroundColor: theme.colors.background,
+              minHeight: "100%",
+              padding: "1rem",
+            }}
+          >
+            <Story />
+          </div>
+        </ThemeProvider>
+      );
+    },
   ],
 });
