@@ -1,39 +1,11 @@
 import { styled } from "styled-components";
+import type { ToggleSwitchShape, ToggleSwitchSize } from "./toggle-switch.js";
 
-type ToggleSize = "sm" | "md" | "lg";
-
-const dimensions: Record<
-  ToggleSize,
-  { width: string; height: string; thumb: string; thumbOffset: string; thumbOn: string }
-> = {
-  sm: {
-    width: "2rem",
-    height: "1.125rem",
-    thumb: "0.75rem",
-    thumbOffset: "0.1875rem",
-    thumbOn: "0.125rem",
-  },
-  md: {
-    width: "2.5rem",
-    height: "1.5rem",
-    thumb: "1.125rem",
-    thumbOffset: "0.1875rem",
-    thumbOn: "0.125rem",
-  },
-  lg: {
-    width: "3.25rem",
-    height: "2rem",
-    thumb: "1.5rem",
-    thumbOffset: "0.25rem",
-    thumbOn: "0.25rem",
-  },
-};
-
-export const StyledToggleSwitchLabel = styled.label<{ $size: ToggleSize }>`
+export const StyledToggleSwitchLabel = styled.label<{ $size: ToggleSwitchSize }>`
   position: relative;
   display: inline-block;
-  width: ${({ $size }) => dimensions[$size].width};
-  height: ${({ $size }) => dimensions[$size].height};
+  width: ${({ theme, $size }) => theme.toggle[$size].width};
+  height: ${({ theme, $size }) => theme.toggle[$size].height};
   flex-shrink: 0;
 `;
 
@@ -44,26 +16,39 @@ export const StyledToggleSwitchInput = styled.input`
   position: absolute;
 `;
 
-export const StyledToggleSwitchSlider = styled.span<{ $checked: boolean; $size: ToggleSize }>`
+export const StyledToggleSwitchSlider = styled.span<{
+  $checked: boolean;
+  $size: ToggleSwitchSize;
+  $shape: ToggleSwitchShape;
+}>`
   position: absolute;
   cursor: pointer;
   inset: 0;
   background-color: ${({ theme, $checked }) =>
     $checked ? theme.colors.primary : theme.colors.border};
-  transition: background-color 150ms ease;
-  border-radius: ${({ theme }) => theme.radius.lg};
+  transition: background-color ${({ theme }) => theme.transition.duration.default}
+    ${({ theme }) => theme.transition.easing.default};
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+  border-radius: ${({ theme, $shape }) =>
+    $shape === "square" ? theme.radius.sm : theme.radius.lg};
   &:before {
     position: absolute;
     content: "";
-    height: ${({ $size }) => dimensions[$size].thumb};
-    width: ${({ $size }) => dimensions[$size].thumb};
-    left: ${({ $checked, $size }) =>
+    height: ${({ theme, $size }) => theme.toggle[$size].thumb};
+    width: ${({ theme, $size }) => theme.toggle[$size].thumb};
+    left: ${({ theme, $checked, $size }) =>
       $checked
-        ? dimensions[$size].thumbOffset
-        : `calc(100% - ${dimensions[$size].thumb} - ${dimensions[$size].thumbOffset})`};
-    bottom: ${({ $size }) => dimensions[$size].thumbOffset};
+        ? theme.toggle[$size].thumbOffset
+        : `calc(100% - ${theme.toggle[$size].thumb} - ${theme.toggle[$size].thumbOffset})`};
+    bottom: ${({ theme, $size }) => theme.toggle[$size].thumbOffset};
     background-color: ${({ theme }) => theme.colors.onPrimary};
-    transition: left 150ms ease;
-    border-radius: 50%;
+    transition: left ${({ theme }) => theme.transition.duration.default}
+      ${({ theme }) => theme.transition.easing.default};
+    border-radius: ${({ theme, $shape }) => ($shape === "square" ? theme.radius.xs : "50%")};
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
   }
 `;

@@ -20,12 +20,16 @@ export const StyledPaginationButton = styled.button`
   font-family: ${({ theme }) => theme.font.family};
   font-size: ${({ theme }) => theme.font.size.sm};
   cursor: pointer;
-  transition: background-color 150ms ease;
+  transition: background-color ${({ theme }) => theme.transition.duration.default}
+    ${({ theme }) => theme.transition.easing.default};
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
   &:hover:not(:disabled) {
     background-color: ${({ theme }) => theme.colors.surface};
   }
   &:disabled {
-    color: ${({ theme }) => theme.colors.muted};
+    color: ${({ theme }) => theme.colors.mutedForeground};
     cursor: not-allowed;
     background-color: ${({ theme }) => theme.colors.surface};
   }
@@ -46,7 +50,7 @@ export const StyledPaginationSelect = styled.select`
 export const StyledPaginationPageInfo = styled.span`
   font-family: ${({ theme }) => theme.font.family};
   font-size: ${({ theme }) => theme.font.size.sm};
-  color: ${({ theme }) => theme.colors.muted};
+  color: ${({ theme }) => theme.colors.mutedForeground};
   white-space: nowrap;
 `;
 
@@ -60,7 +64,7 @@ export const StyledTableSummaryContainer = styled.div`
 export const StyledTableSummaryText = styled.span`
   font-family: ${({ theme }) => theme.font.family};
   font-size: ${({ theme }) => theme.font.size.sm};
-  color: ${({ theme }) => theme.colors.muted};
+  color: ${({ theme }) => theme.colors.mutedForeground};
 `;
 
 export const StyledTableSummaryDebug = styled.span`
@@ -91,8 +95,12 @@ export const StyledFilterToggleButton = styled.button<{ $active: boolean }>`
   border: none;
   background: none;
   cursor: pointer;
-  color: ${({ theme, $active }) => ($active ? theme.colors.primary : theme.colors.muted)};
-  transition: color 150ms ease;
+  color: ${({ theme, $active }) => ($active ? theme.colors.primary : theme.colors.mutedForeground)};
+  transition: color ${({ theme }) => theme.transition.duration.default}
+    ${({ theme }) => theme.transition.easing.default};
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
   flex-shrink: 0;
   &:hover {
     color: ${({ theme, $active }) => ($active ? theme.colors.primary : theme.colors.foreground)};
@@ -117,7 +125,7 @@ export const StyledFilterInput = styled.input`
   outline: none;
   box-sizing: border-box;
   &::placeholder {
-    color: ${({ theme }) => theme.colors.muted};
+    color: ${({ theme }) => theme.colors.mutedForeground};
   }
   &:focus {
     border-color: ${({ theme }) => theme.colors.primary};
@@ -134,12 +142,16 @@ export const StyledSortButton = styled.button`
   border: none;
   border-radius: ${({ theme }) => theme.radius.sm};
   background-color: transparent;
-  color: ${({ theme }) => theme.colors.muted};
+  color: ${({ theme }) => theme.colors.mutedForeground};
   font-family: ${({ theme }) => theme.font.family};
   font-size: ${({ theme }) => theme.font.size.sm};
   cursor: pointer;
   flex-shrink: 0;
-  transition: color 150ms ease;
+  transition: color ${({ theme }) => theme.transition.duration.default}
+    ${({ theme }) => theme.transition.easing.default};
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
   &:hover {
     color: ${({ theme }) => theme.colors.foreground};
   }
@@ -161,7 +173,7 @@ export const StyledSortAndNameContainer = styled.div`
 export const StyledHeaderName = styled.span`
   font-family: ${({ theme }) => theme.font.family};
   font-size: ${({ theme }) => theme.font.size.sm};
-  font-weight: ${({ theme }) => theme.font.weight.semibold};
+  font-weight: ${({ theme }) => theme.font.weight.medium};
   color: ${({ theme }) => theme.colors.foreground};
   flex: 1;
   white-space: nowrap;

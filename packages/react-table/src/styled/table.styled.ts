@@ -1,4 +1,22 @@
-import { styled } from "styled-components";
+import { css, keyframes, styled } from "styled-components";
+import type { TableDensity } from "../types/index.js";
+
+const pulse = keyframes`
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+`;
+
+const densityCellPadding = {
+  compact: css`
+    padding: ${({ theme }) => `${theme.spacing.xs} ${theme.spacing.sm}`};
+  `,
+  comfortable: css`
+    padding: ${({ theme }) => `${theme.spacing.sm} ${theme.spacing.md}`};
+  `,
+  spacious: css`
+    padding: ${({ theme }) => `${theme.spacing.md} ${theme.spacing.lg}`};
+  `,
+};
 
 export const StyledTableContainer = styled.div`
   width: 100%;
@@ -28,7 +46,11 @@ export const StyledTfoot = styled.tfoot`
 
 export const StyledTr = styled.tr`
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-  transition: background-color 100ms ease;
+  transition: background-color ${({ theme }) => theme.transition.duration.fast}
+    ${({ theme }) => theme.transition.easing.default};
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
   &:last-child {
     border-bottom: none;
   }
@@ -37,18 +59,18 @@ export const StyledTr = styled.tr`
   }
 `;
 
-export const StyledTh = styled.th`
-  padding: ${({ theme }) => `${theme.spacing.sm} ${theme.spacing.md}`};
+export const StyledTh = styled.th<{ $density?: TableDensity }>`
+  ${({ $density = "comfortable" }) => densityCellPadding[$density]}
   text-align: left;
   font-family: ${({ theme }) => theme.font.family};
   font-size: ${({ theme }) => theme.font.size.sm};
-  font-weight: ${({ theme }) => theme.font.weight.semibold};
+  font-weight: ${({ theme }) => theme.font.weight.medium};
   color: ${({ theme }) => theme.colors.foreground};
   white-space: nowrap;
 `;
 
-export const StyledTd = styled.td`
-  padding: ${({ theme }) => `${theme.spacing.sm} ${theme.spacing.md}`};
+export const StyledTd = styled.td<{ $density?: TableDensity }>`
+  ${({ $density = "comfortable" }) => densityCellPadding[$density]}
   text-align: left;
   font-family: ${({ theme }) => theme.font.family};
   font-size: ${({ theme }) => theme.font.size.sm};
@@ -96,5 +118,28 @@ export const StyledEmptyState = styled.td`
   text-align: center;
   font-family: ${({ theme }) => theme.font.family};
   font-size: ${({ theme }) => theme.font.size.sm};
-  color: ${({ theme }) => theme.colors.muted};
+  color: ${({ theme }) => theme.colors.mutedForeground};
+`;
+
+export const StyledSkeletonCell = styled.td<{ $density?: TableDensity }>`
+  ${({ $density = "comfortable" }) => densityCellPadding[$density]}
+  & > span {
+    display: block;
+    height: 1rem;
+    background-color: ${({ theme }) => theme.colors.surface};
+    border-radius: ${({ theme }) => theme.radius.sm};
+    animation: ${pulse} 1.5s ease-in-out infinite;
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+`;
+
+export const StyledErrorCell = styled.td`
+  padding: ${({ theme }) => `${theme.spacing.xl} ${theme.spacing.md}`};
+  text-align: left;
+  font-family: ${({ theme }) => theme.font.family};
+  font-size: ${({ theme }) => theme.font.size.sm};
+  color: ${({ theme }) => theme.colors.error};
+  border-left: 3px solid ${({ theme }) => theme.colors.error};
 `;

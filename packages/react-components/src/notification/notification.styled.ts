@@ -8,7 +8,7 @@ export const StyledNotificationsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.sm};
-  z-index: 9999;
+  z-index: ${({ theme }) => theme.zIndex.notification};
 `;
 
 export const StyledNotification = styled.div<{ $type: NotifyType }>`
@@ -42,7 +42,7 @@ export const StyledNotificationMessage = styled.span`
 export const StyledNotificationClose = styled.button`
   background: none;
   border: none;
-  color: ${({ theme }) => theme.colors.muted};
+  color: ${({ theme }) => theme.colors.mutedForeground};
   cursor: pointer;
   font-size: ${({ theme }) => theme.font.size.md};
   padding: 0;

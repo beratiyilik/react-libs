@@ -1,6 +1,6 @@
 "use client";
 import type { ChangeEvent, ReactNode } from "react";
-import { ToggleSwitch, SearchBox } from "@beratiyilik/react-components";
+import { ToggleSwitch, SearchBox, Checkbox } from "@beratiyilik/react-components";
 import {
   StyledPaginationContainer,
   StyledPaginationButton,
@@ -13,7 +13,7 @@ import {
 import { PAGE_SIZE_OPTIONS } from "../hooks/index.js";
 import type { FilterState, SortState, FieldOption } from "../types/index.js";
 
-export { ToggleSwitch, SearchBox };
+export { ToggleSwitch, SearchBox, Checkbox };
 
 export const Pagination = ({
   passive,

@@ -1,5 +1,11 @@
 "use client";
-import { useState, type ReactNode, type Dispatch, type SetStateAction } from "react";
+import {
+  useState,
+  type ReactNode,
+  type Dispatch,
+  type SetStateAction,
+  type AriaAttributes,
+} from "react";
 import {
   StyledTh,
   StyledHeaderContainer,
@@ -10,6 +16,7 @@ import {
 } from "../../styled/index.js";
 import { Sort } from "./sort.component.js";
 import { Filter } from "./filter.component.js";
+import { useTable } from "../../context/table.context.js";
 import type { FilterState, SortState, FieldOption } from "../../types/index.js";
 
 export const HeaderCell = <T extends Record<string, unknown>>({
@@ -32,6 +39,7 @@ export const HeaderCell = <T extends Record<string, unknown>>({
   setFilters: Dispatch<SetStateAction<FilterState[]>>;
   selectionComponent?: ReactNode;
 }) => {
+  const { density } = useTable();
   const [filterOpen, setFilterOpen] = useState(false);
 
   const _sortFieldName = sortFieldName ?? fieldName;
@@ -49,8 +57,25 @@ export const HeaderCell = <T extends Record<string, unknown>>({
 
   const showInput = filterOpen || filter.value !== "";
 
+  if (selection) {
+    return (
+      <StyledTh $density={density} style={{ verticalAlign: "middle" }}>
+        {selectionComponent}
+      </StyledTh>
+    );
+  }
+
+  const ariaSortValue =
+    sortable && sort.field === _sortFieldName
+      ? sort.direction === "asc"
+        ? "ascending"
+        : "descending"
+      : sortable
+        ? "none"
+        : undefined;
+
   return (
-    <StyledTh>
+    <StyledTh $density={density} aria-sort={ariaSortValue as AriaAttributes["aria-sort"]}>
       <StyledHeaderContainer>
         <StyledSortAndNameContainer>
           <StyledHeaderName>{headerName ?? fieldName}</StyledHeaderName>
