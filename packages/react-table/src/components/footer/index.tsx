@@ -1,7 +1,7 @@
 "use client";
 import type { ReactNode } from "react";
 import { StyledTfoot, StyledTr, StyledTd } from "../../styled/index.js";
-import { ComponentRenderer } from "../shared.components.js";
+import { ComponentRenderer } from "../ComponentRenderer/index.js";
 
 export const TableFooter = ({
   numberOfHeaders,

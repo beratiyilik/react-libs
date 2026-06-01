@@ -1,10 +1,10 @@
 "use client";
 import { createContext, useContext, useMemo, type ReactNode } from "react";
-import { useSearch } from "../hooks/use-search.hook.js";
-import { useFilters } from "../hooks/use-filters.hook.js";
-import { useSort } from "../hooks/use-sort.hook.js";
-import { usePagination } from "../hooks/use-pagination.hook.js";
-import { useSelection } from "../hooks/use-selection.hook.js";
+import { useSearch } from "../hooks/useSearch.js";
+import { useFilters } from "../hooks/useFilters.js";
+import { useSort } from "../hooks/useSort.js";
+import { usePagination } from "../hooks/usePagination.js";
+import { useSelection } from "../hooks/useSelection.js";
 import type {
   TableOptions,
   SortState,

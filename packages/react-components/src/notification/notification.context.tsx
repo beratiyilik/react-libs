@@ -1,10 +1,10 @@
 "use client";
 import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
-import { Notifications } from "./notifications.component.js";
+import { Notifications } from "./Notifications.js";
 import { uuid } from "@beratiyilik/ts-utils";
-import { NotifyTypes, NOTIFICATION_DISPLAY_DURATION } from "./notification.constants.js";
-import type { NotifyType } from "./notification.constants.js";
-import type { Notification, NotificationContextValue } from "./notification.types.js";
+import { NotifyTypes, NOTIFICATION_DISPLAY_DURATION } from "./Notification.constants.js";
+import type { NotifyType } from "./Notification.constants.js";
+import type { Notification, NotificationContextValue } from "./Notification.types.js";
 
 const NotificationContext = createContext<NotificationContextValue | null>(null);
 

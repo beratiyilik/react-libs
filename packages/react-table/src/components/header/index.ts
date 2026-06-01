@@ -1,4 +1,4 @@
-export { HeaderCell } from "./cell.component.js";
-export { Sort } from "./sort.component.js";
-export { Filter } from "./filter.component.js";
-export { HeaderSelection } from "./selection.component.js";
+export { HeaderCell } from "./HeaderCell.js";
+export { Sort } from "./Sort.js";
+export { Filter } from "./Filter.js";
+export { HeaderSelection } from "./HeaderSelection.js";

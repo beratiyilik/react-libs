@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { NotifyType } from "./notification.constants.js";
+import type { NotifyType } from "./Notification.constants.js";
 
 export type Notification = {
   id: string;

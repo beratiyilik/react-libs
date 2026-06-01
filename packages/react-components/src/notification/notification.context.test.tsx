@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
-import { NotificationProvider, useNotification } from "./notification.context.js";
+import { NotificationProvider, useNotification } from "./Notification.context.js";
 import { defaultTheme } from "../theme/index.js";
 import type { ReactNode } from "react";
 
