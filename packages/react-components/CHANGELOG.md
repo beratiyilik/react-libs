@@ -1,5 +1,11 @@
 # @beratiyilik/react-components
 
+## 0.1.0-alpha.3
+
+### Minor Changes
+
+- Applied TypeScript/React naming and file structure conventions across all components. Updated theme tokens and visual identity alignment.
+
 ## 0.1.0-alpha.2
 
 ### Minor Changes
