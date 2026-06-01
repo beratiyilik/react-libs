@@ -1,5 +1,5 @@
 "use client";
-import { TableProvider } from "./context/table.context.js";
+import { TableProvider } from "./context/Table.context.js";
 import {
   TopSection,
   HeaderSection,

@@ -1,2 +1,2 @@
-export * from "./table.styled.js";
-export * from "./shared.styled.js";
+export * from "./Table.styles.js";
+export * from "./Shared.styles.js";
