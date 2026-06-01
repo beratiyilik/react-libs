@@ -1,3 +1,3 @@
-export { useDebounce } from "./useDebounce.js";
-export { useThrottle } from "./useThrottle.js";
-export { useLocalStorage } from "./useLocalStorage.js";
+export { useDebounce } from "./use-debounce.js";
+export { useThrottle } from "./use-throttle.js";
+export { useLocalStorage } from "./use-local-storage.js";

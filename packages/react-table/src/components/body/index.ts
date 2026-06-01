@@ -1,2 +1,2 @@
-export { BodyCell } from "./BodyCell.js";
-export { BodyRow } from "./BodyRow.js";
+export { BodyCell } from "./body-cell.js";
+export { BodyRow } from "./body-row.js";

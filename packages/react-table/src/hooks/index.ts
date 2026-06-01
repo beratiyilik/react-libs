@@ -1,5 +1,5 @@
-export { useSort } from "./useSort.js";
-export { useFilters } from "./useFilters.js";
-export { useSearch } from "./useSearch.js";
-export { usePagination, PAGE_SIZE_OPTIONS } from "./usePagination.js";
-export { useSelection } from "./useSelection.js";
+export { useSort } from "./use-sort.js";
+export { useFilters } from "./use-filters.js";
+export { useSearch } from "./use-search.js";
+export { usePagination, PAGE_SIZE_OPTIONS } from "./use-pagination.js";
+export { useSelection } from "./use-selection.js";

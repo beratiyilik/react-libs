@@ -1,4 +1,4 @@
-export { ErrorIcon } from "./ErrorIcon.js";
-export { InfoIcon } from "./InfoIcon.js";
-export { SuccessIcon } from "./SuccessIcon.js";
-export { WarningIcon } from "./WarningIcon.js";
+export { ErrorIcon } from "./error-icon.js";
+export { InfoIcon } from "./info-icon.js";
+export { SuccessIcon } from "./success-icon.js";
+export { WarningIcon } from "./warning-icon.js";

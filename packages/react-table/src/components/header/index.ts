@@ -1,4 +1,4 @@
-export { HeaderCell } from "./HeaderCell.js";
-export { Sort } from "./Sort.js";
-export { Filter } from "./Filter.js";
-export { HeaderSelection } from "./HeaderSelection.js";
+export { HeaderCell } from "./header-cell.js";
+export { Sort } from "./sort.js";
+export { Filter } from "./filter.js";
+export { HeaderSelection } from "./header-selection.js";

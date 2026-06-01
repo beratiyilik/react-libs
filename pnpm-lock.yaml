@@ -20,6 +20,9 @@ importers:
       eslint:
         specifier: ^10.4.1
         version: 10.4.1
+      eslint-plugin-check-file:
+        specifier: ^3.3.1
+        version: 3.3.1(eslint@10.4.1)
       husky:
         specifier: ^9.1.7
         version: 9.1.7
@@ -1629,6 +1632,12 @@ packages:
   escape-string-regexp@4.0.0:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
+
+  eslint-plugin-check-file@3.3.1:
+    resolution: {integrity: sha512-b7fDkp8Y0T9vloTYSrkMnb5Cqpk1bc6+jDQdgKIhzdwb47NmLAvMFYo3SzHOPF8u4SEsOVhmrNSbo6Sp633syg==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      eslint: '>=9.0.0'
 
   eslint-scope@9.1.2:
     resolution: {integrity: sha512-xS90H51cKw0jltxmvmHy2Iai1LIqrfbw57b79w/J7MfvDfkIkFZ+kj6zC3BjtUwh150HsSSdxXZcsuv72miDFQ==}
@@ -4158,6 +4167,12 @@ snapshots:
   escalade@3.2.0: {}
 
   escape-string-regexp@4.0.0: {}
+
+  eslint-plugin-check-file@3.3.1(eslint@10.4.1):
+    dependencies:
+      eslint: 10.4.1
+      is-glob: 4.0.3
+      micromatch: 4.0.8
 
   eslint-scope@9.1.2:
     dependencies:

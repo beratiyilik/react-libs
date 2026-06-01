@@ -1,5 +1,5 @@
-export { Table } from "./Table.js";
-export type { TableProps } from "./Table.js";
+export { Table } from "./table.js";
+export type { TableProps } from "./table.js";
 export type {
   TableOptions,
   FieldOption,
