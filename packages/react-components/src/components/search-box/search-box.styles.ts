@@ -39,6 +39,9 @@ export const StyledSearchBoxContainer = styled.div<{ $size: SearchBoxSize; $flui
   border-radius: ${({ theme }) => theme.radius.md};
   background-color: ${({ theme }) => theme.colors.background};
   width: ${({ $fluid }) => ($fluid ? "100%" : "fit-content")};
+  &:focus-within {
+    border-color: ${({ theme }) => theme.colors.primary};
+  }
 `;
 
 export const StyledSearchBoxLabel = styled.label<{ $size: SearchBoxSize }>`
@@ -53,21 +56,13 @@ export const StyledSearchBoxInput = styled.input<{ $size: SearchBoxSize }>`
   ${({ $size }) => inputSizeStyles[$size]}
   flex: 1;
   min-width: 0;
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: ${({ theme }) => theme.radius.sm};
-  background-color: ${({ theme }) => theme.colors.background};
+  border: none;
+  background-color: transparent;
   color: ${({ theme }) => theme.colors.foreground};
   font-family: ${({ theme }) => theme.font.family};
   outline: none;
-  transition: border-color ${({ theme }) => theme.transition.duration.fast}
-    ${({ theme }) => theme.transition.easing.default};
-  @media (prefers-reduced-motion: reduce) {
-    transition: none;
-  }
+  transition: none;
   &::placeholder {
     color: ${({ theme }) => theme.colors.mutedForeground};
-  }
-  &:focus {
-    border-color: ${({ theme }) => theme.colors.primary};
   }
 `;

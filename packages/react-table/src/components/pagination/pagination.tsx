@@ -26,6 +26,9 @@ export const Pagination = ({
   if (passive) return null;
   return (
     <StyledPaginationContainer>
+      <StyledPaginationButton disabled={currentPage <= 1} onClick={() => setCurrentPage(1)}>
+        «
+      </StyledPaginationButton>
       <StyledPaginationButton
         disabled={currentPage <= 1}
         onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
@@ -37,6 +40,12 @@ export const Pagination = ({
         onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
       >
         ›
+      </StyledPaginationButton>
+      <StyledPaginationButton
+        disabled={currentPage >= totalPages}
+        onClick={() => setCurrentPage(totalPages)}
+      >
+        »
       </StyledPaginationButton>
       <StyledPaginationSelect
         value={pageSize}

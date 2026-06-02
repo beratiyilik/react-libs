@@ -22,7 +22,7 @@ export const usePagination = <T extends Record<string, unknown>>(data: T[]) => {
     [data.length, pageSize],
   );
 
-  const debouncedCurrentPage = useDebounce(currentPage, 150);
+  const debouncedCurrentPage = useDebounce(currentPage, 200);
 
   const paginatedData = useMemo(() => {
     const startIndex = (debouncedCurrentPage - 1) * pageSize;

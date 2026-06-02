@@ -1,6 +1,6 @@
 {
   "name": "@beratiyilik/react-components",
-  "version": "0.1.0-alpha.3",
+  "version": "0.1.0-alpha.4",
   "description": "React component library built with styled-components",
   "keywords": [
     "react",
@@ -40,8 +40,8 @@
     "styled-components": ">=6.0.0"
   },
   "dependencies": {
-    "@beratiyilik/browser-utils": "0.1.0-alpha.1",
-    "@beratiyilik/ts-utils": "0.1.0-alpha.1"
+    "@beratiyilik/browser-utils": "0.1.0-alpha.2",
+    "@beratiyilik/ts-utils": "0.1.0-alpha.2"
   },
   "repository": {
     "type": "git",
@@ -62,14 +62,14 @@
     "@arethetypeswrong/cli": "^0.18.3",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
-    "@types/react": "^19.2.15",
+    "@types/react": "^19.2.16",
     "@types/react-dom": "^19.2.3",
     "jsdom": "^29.1.1",
     "publint": "^0.3.21",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "styled-components": "^6.4.2",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.7"
+    "vitest": "^4.1.8"
   }
 }

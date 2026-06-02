@@ -14,7 +14,7 @@ export const useSelection = <T extends Record<string, unknown>>(
 ) => {
   const [selectedRows, setSelectedRows] = useState<T[]>([]);
 
-  const debouncedSelectedRows = useDebounce(selectedRows, 275);
+  const debouncedSelectedRows = useDebounce(selectedRows, 200);
 
   const toggle = (row: T) => {
     const index = selectedRows.findIndex(predictiveIdentifier(row));

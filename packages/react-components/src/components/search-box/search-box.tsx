@@ -25,7 +25,7 @@ export const SearchBox = ({
   value,
   onChange,
   placeholder = "Search…",
-  label = "Search",
+  label,
   size = "md",
   fluid = false,
   passive = false,
@@ -46,9 +46,11 @@ export const SearchBox = ({
 
   return (
     <StyledSearchBoxContainer $size={size} $fluid={fluid} {...rest}>
-      <StyledSearchBoxLabel htmlFor={inputId} $size={size}>
-        {label}
-      </StyledSearchBoxLabel>
+      {label !== undefined && (
+        <StyledSearchBoxLabel htmlFor={inputId} $size={size}>
+          {label}
+        </StyledSearchBoxLabel>
+      )}
       <StyledSearchBoxInput
         id={inputId}
         type="text"

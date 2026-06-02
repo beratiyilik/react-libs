@@ -10,7 +10,7 @@ const meta: Meta<typeof SearchBox> = {
     docs: {
       description: {
         component:
-          "Search input with controlled and uncontrolled modes. Supports `value`/`onChange` for controlled usage, `size` (sm/md/lg), `fluid` width, and `label` customization.",
+          "Search input with controlled and uncontrolled modes. Supports `value`/`onChange` for controlled usage, `size` (sm/md/lg), `fluid` width, `label` customization, and `passive` mode.",
       },
     },
   },
@@ -24,7 +24,6 @@ const meta: Meta<typeof SearchBox> = {
 };
 
 export default meta;
-
 type Story = StoryObj<typeof SearchBox>;
 
 export const Uncontrolled: Story = {
@@ -65,4 +64,9 @@ export const Fluid: Story = {
 export const CustomLabel: Story = {
   parameters: { docs: { description: { story: "Custom label text." } } },
   args: { label: "Filter results", placeholder: "Type to filter…" },
+};
+
+export const Passive: Story = {
+  parameters: { docs: { description: { story: "Passive mode — component returns null." } } },
+  args: { passive: true, label: "Search" },
 };
