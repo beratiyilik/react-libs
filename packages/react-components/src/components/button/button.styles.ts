@@ -1,5 +1,5 @@
 import { css, keyframes, styled } from "styled-components";
-import type { ButtonSize, ButtonVariant } from "./button.js";
+import type { ButtonSize, ButtonVariant } from "./button.types.js";
 
 const spin = keyframes`
   from { transform: rotate(0deg); }
@@ -10,14 +10,17 @@ const sizeStyles = {
   sm: css`
     padding: ${({ theme }) => `${theme.spacing.xs} ${theme.spacing.sm}`};
     font-size: ${({ theme }) => theme.font.size.sm};
+    min-height: 2rem;
   `,
   md: css`
     padding: ${({ theme }) => `${theme.spacing.sm} ${theme.spacing.md}`};
     font-size: ${({ theme }) => theme.font.size.md};
+    min-height: 2.5rem;
   `,
   lg: css`
     padding: ${({ theme }) => `${theme.spacing.md} ${theme.spacing.lg}`};
     font-size: ${({ theme }) => theme.font.size.lg};
+    min-height: 3rem;
   `,
 };
 
@@ -72,6 +75,7 @@ export const StyledButton = styled.button<{
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  position: relative;
   border-radius: ${({ theme }) => theme.radius.md};
   border: 1px solid transparent;
   cursor: ${({ $loading }) => ($loading ? "not-allowed" : "pointer")};
@@ -92,6 +96,21 @@ export const StyledButton = styled.button<{
     opacity: 0.4;
     cursor: not-allowed;
   }
+`;
+
+export const StyledButtonContent = styled.span<{ $loading: boolean }>`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  visibility: ${({ $loading }) => ($loading ? "hidden" : "visible")};
+`;
+
+export const StyledSpinnerWrapper = styled.span`
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const StyledSpinnerSvg = styled.svg`

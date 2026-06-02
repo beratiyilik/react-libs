@@ -9,7 +9,7 @@ const meta: Meta<typeof Button> = {
     docs: {
       description: {
         component:
-          "Primary UI component for user interaction. Supports `primary`, `secondary`, `ghost`, `outline`, `destructive` variants and `sm`, `md`, `lg` sizes. Pass `loading` for a spinner state.",
+          "Primary UI component for user interaction. Supports `primary`, `secondary`, `ghost`, `outline`, `destructive` variants and `sm`, `md`, `lg` sizes. Pass `loading` for a spinner state. Use `mode` (`normal` | `debounce` | `throttle`) with `delay` (ms) to control click behaviour.",
       },
     },
   },
@@ -22,6 +22,11 @@ const meta: Meta<typeof Button> = {
       control: "select",
       options: ["sm", "md", "lg"],
     },
+    mode: {
+      control: "select",
+      options: ["normal", "debounce", "throttle"],
+    },
+    delay: { control: "number" },
     loading: { control: "boolean" },
     disabled: { control: "boolean" },
     children: { control: "text" },
@@ -29,7 +34,6 @@ const meta: Meta<typeof Button> = {
 };
 
 export default meta;
-
 type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
@@ -99,4 +103,56 @@ export const AllVariants: Story = {
       <Button variant="destructive">Destructive</Button>
     </div>
   ),
+};
+
+export const Debounce: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Debounce mode — `onClick` fires only after the user stops clicking for `delay` ms. Spam the button to observe the behaviour.",
+      },
+    },
+  },
+  args: {
+    variant: "primary",
+    mode: "debounce",
+    delay: 500,
+    onClick: () => console.log("debounced click fired"),
+    children: "Debounce (500ms)",
+  },
+};
+
+export const Throttle: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Throttle mode — `onClick` fires at most once per `delay` ms regardless of how many times the button is clicked.",
+      },
+    },
+  },
+  args: {
+    variant: "primary",
+    mode: "throttle",
+    delay: 1000,
+    onClick: () => console.log("throttled click fired"),
+    children: "Throttle (1000ms)",
+  },
+};
+
+export const AsyncLoading: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Async `onClick` — button manages its own loading state. Spinner appears automatically while the promise is pending.",
+      },
+    },
+  },
+  args: {
+    variant: "primary",
+    onClick: () => new Promise((resolve) => setTimeout(resolve, 2000)),
+    children: "Save (async)",
+  },
 };
