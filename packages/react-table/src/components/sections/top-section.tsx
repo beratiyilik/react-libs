@@ -21,7 +21,7 @@ export const TopSection = () => {
   } = useTable();
 
   const memoizedSearchBox = useMemo(
-    () => <SearchBox passive={!searchable} value={searchTerm} onChange={setSearchTerm} />,
+    () => <SearchBox size="sm" passive={!searchable} value={searchTerm} onChange={setSearchTerm} />,
     [searchable, searchTerm, setSearchTerm],
   );
 

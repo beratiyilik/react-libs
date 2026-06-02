@@ -1,12 +1,50 @@
 "use client";
 import type { ChangeEvent } from "react";
+import { Button } from "@beratiyilik/react-components";
 import {
   StyledPaginationContainer,
-  StyledPaginationButton,
   StyledPaginationSelect,
   StyledPaginationPageInfo,
 } from "../../styled/index.js";
 import { PAGE_SIZE_OPTIONS } from "../../hooks/index.js";
+
+const iconProps = {
+  width: "1em",
+  height: "1em",
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 2,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+  "aria-hidden": true,
+};
+
+const ChevronDoubleLeft = () => (
+  <svg {...iconProps}>
+    <path d="M11 17l-5-5 5-5" />
+    <path d="M18 17l-5-5 5-5" />
+  </svg>
+);
+
+const ChevronLeft = () => (
+  <svg {...iconProps}>
+    <path d="M15 18l-6-6 6-6" />
+  </svg>
+);
+
+const ChevronRight = () => (
+  <svg {...iconProps}>
+    <path d="M9 18l6-6-6-6" />
+  </svg>
+);
+
+const ChevronDoubleRight = () => (
+  <svg {...iconProps}>
+    <path d="M6 17l5-5-5-5" />
+    <path d="M13 17l5-5-5-5" />
+  </svg>
+);
 
 export const Pagination = ({
   passive,
@@ -26,27 +64,46 @@ export const Pagination = ({
   if (passive) return null;
   return (
     <StyledPaginationContainer>
-      <StyledPaginationButton disabled={currentPage <= 1} onClick={() => setCurrentPage(1)}>
-        «
-      </StyledPaginationButton>
-      <StyledPaginationButton
+      <Button
+        iconOnly
+        size="sm"
+        variant="outline"
+        disabled={currentPage <= 1}
+        onClick={() => setCurrentPage(1)}
+        aria-label="First page"
+      >
+        <ChevronDoubleLeft />
+      </Button>
+      <Button
+        iconOnly
+        size="sm"
+        variant="outline"
         disabled={currentPage <= 1}
         onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+        aria-label="Previous page"
       >
-        ‹
-      </StyledPaginationButton>
-      <StyledPaginationButton
+        <ChevronLeft />
+      </Button>
+      <Button
+        iconOnly
+        size="sm"
+        variant="outline"
         disabled={currentPage >= totalPages}
         onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+        aria-label="Next page"
       >
-        ›
-      </StyledPaginationButton>
-      <StyledPaginationButton
+        <ChevronRight />
+      </Button>
+      <Button
+        iconOnly
+        size="sm"
+        variant="outline"
         disabled={currentPage >= totalPages}
         onClick={() => setCurrentPage(totalPages)}
+        aria-label="Last page"
       >
-        »
-      </StyledPaginationButton>
+        <ChevronDoubleRight />
+      </Button>
       <StyledPaginationSelect
         value={pageSize}
         onChange={({ target }: ChangeEvent<HTMLSelectElement>) =>

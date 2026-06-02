@@ -1,14 +1,16 @@
 import { styled } from "styled-components";
-import type { CheckboxSize } from "./checkbox.js";
+import type { ControlSize } from "../../theme/types.js";
 
-const boxSize: Record<CheckboxSize, string> = {
+const boxSize: Record<ControlSize, string> = {
+  xs: "0.75rem",
   sm: "0.875rem",
   md: "1rem",
   lg: "1.25rem",
+  xl: "1.5rem",
 };
 
 export const StyledCheckboxWrapper = styled.span<{
-  $size: CheckboxSize;
+  $size: ControlSize;
   $checked: boolean;
   $indeterminate: boolean;
   $disabled: boolean;

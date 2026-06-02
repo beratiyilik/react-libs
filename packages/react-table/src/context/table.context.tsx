@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useMemo, type ReactNode } from "react";
+import { createContext, useContext, type ReactNode } from "react";
 import { useSearch } from "../hooks/use-search.js";
 import { useFilters } from "../hooks/use-filters.js";
 import { useSort } from "../hooks/use-sort.js";
@@ -37,7 +37,6 @@ type TableContextValue<T extends Record<string, unknown>> = {
     setPageSize: (size: number) => void;
     totalPages: number;
     data: T[];
-    component?: ReactNode;
   };
   selection: SelectionState<T>;
   processedData: T[];
@@ -62,12 +61,7 @@ export const TableProvider = <T extends Record<string, unknown>>({
   options,
   data,
 }: TableProviderProps<T>) => {
-  const {
-    pagination: hasPagination = true,
-    density = "comfortable",
-    loading = false,
-    error,
-  } = options;
+  const { density = "comfortable", loading = false, error } = options;
 
   const { data: searchedData, ...restOfSearch } = useSearch(data);
   const { data: filteredData, ...restOfFilters } = useFilters(searchedData);
@@ -84,14 +78,6 @@ export const TableProvider = <T extends Record<string, unknown>>({
 
   const selection = useSelection(data, predictiveIdentifier);
 
-  const memoizedPagination = useMemo(
-    () => ({
-      ...pagination,
-      component: hasPagination ? undefined : undefined,
-    }),
-    [pagination, hasPagination],
-  );
-
   const value = {
     options,
     data,
@@ -101,7 +87,7 @@ export const TableProvider = <T extends Record<string, unknown>>({
     search: { ...restOfSearch, data: searchedData },
     filters: { ...restOfFilters, data: filteredData },
     sort: { ...restOfSort, data: sortedData },
-    pagination: memoizedPagination,
+    pagination,
     selection,
     processedData: pagination.data,
   } as unknown as TableContextValue<Record<string, unknown>>;

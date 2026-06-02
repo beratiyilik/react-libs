@@ -10,7 +10,7 @@ const meta: Meta<typeof Checkbox> = {
     docs: {
       description: {
         component:
-          "Accessible checkbox with checked, unchecked, and indeterminate states. Supports `sm`, `md`, `lg` sizes and optional `label`.",
+          "Accessible checkbox with checked, unchecked, and indeterminate states. Supports `xs`, `sm`, `md`, `lg`, `xl` sizes and optional `label`.",
       },
     },
   },
@@ -18,7 +18,7 @@ const meta: Meta<typeof Checkbox> = {
     checked: { control: "boolean" },
     indeterminate: { control: "boolean" },
     disabled: { control: "boolean" },
-    size: { control: "select", options: ["sm", "md", "lg"] },
+    size: { control: "select", options: ["xs", "sm", "md", "lg", "xl"] },
     label: { control: "text" },
   },
 };
@@ -59,15 +59,31 @@ export const WithLabel: Story = {
 };
 
 export const Sizes: Story = {
-  parameters: { docs: { description: { story: "All three sizes: sm, md (default), lg." } } },
+  parameters: {
+    docs: { description: { story: "All five sizes: xs, sm, md (default), lg, xl." } },
+  },
   render: () => {
-    const [vals, setVals] = useState([false, true, false]);
+    const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
+    const labels: Record<(typeof sizes)[number], string> = {
+      xs: "XSmall",
+      sm: "Small",
+      md: "Medium",
+      lg: "Large",
+      xl: "XLarge",
+    };
+    const [vals, setVals] = useState(sizes.map((_, i) => i === 2));
     const toggle = (i: number) => setVals((prev) => prev.map((v, idx) => (idx === i ? !v : v)));
     return (
-      <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-        <Checkbox size="sm" checked={vals[0] ?? false} onChange={() => toggle(0)} label="Small" />
-        <Checkbox size="md" checked={vals[1] ?? false} onChange={() => toggle(1)} label="Medium" />
-        <Checkbox size="lg" checked={vals[2] ?? false} onChange={() => toggle(2)} label="Large" />
+      <div style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap" }}>
+        {sizes.map((size, i) => (
+          <Checkbox
+            key={size}
+            size={size}
+            checked={vals[i] ?? false}
+            onChange={() => toggle(i)}
+            label={labels[size]}
+          />
+        ))}
       </div>
     );
   },

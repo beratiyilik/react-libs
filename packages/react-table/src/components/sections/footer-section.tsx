@@ -9,7 +9,7 @@ export const FooterSection = () => {
   const {
     options: { fieldOptions, pagination: hasPagination, debug = false, footerComponents = [] },
     data,
-    search: { searchTerm, data: searchedData },
+    search: { searchTerm },
     filters: { filters, data: filteredData },
     sort: { sort },
     pagination: { currentPage, setCurrentPage, pageSize, setPageSize, totalPages },
@@ -44,8 +44,6 @@ export const FooterSection = () => {
     ),
     [debug, fieldOptions, data, searchTerm, filters, sort, filteredData.length],
   );
-
-  void searchedData;
 
   return (
     <TableFooter

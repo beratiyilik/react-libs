@@ -1,5 +1,6 @@
 "use client";
-import { StyledFilterToggleButton } from "../../styled/index.js";
+import { useTheme } from "styled-components";
+import { Button } from "@beratiyilik/react-components";
 import type { FilterState } from "../../types/index.js";
 
 const FilterIcon = ({ active }: { active: boolean }) => (
@@ -22,23 +23,26 @@ export const Filter = ({
   filter,
   onToggle,
 }: {
-  field: string;
   passive: boolean;
   filter: FilterState;
-  setFilter: (filter: FilterState) => void;
   onToggle?: () => void;
 }) => {
+  const theme = useTheme();
   if (passive) return null;
 
   const isActive = filter.value !== "";
 
   return (
-    <StyledFilterToggleButton
-      $active={isActive}
-      onClick={onToggle}
-      title={isActive ? "Filter active" : "Filter"}
+    <Button
+      iconOnly
+      size="sm"
+      variant="ghost"
+      aria-label={isActive ? "Filter active" : "Filter"}
+      aria-pressed={isActive}
+      style={{ color: isActive ? theme.colors.primary : theme.colors.mutedForeground }}
+      {...(onToggle !== undefined && { onClick: onToggle })}
     >
       <FilterIcon active={isActive} />
-    </StyledFilterToggleButton>
+    </Button>
   );
 };

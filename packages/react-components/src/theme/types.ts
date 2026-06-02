@@ -1,3 +1,13 @@
+export type ControlSize = "xs" | "sm" | "md" | "lg" | "xl";
+
+type ControlSizeTokens = {
+  height: string;
+  paddingX: string;
+  fontSize: string;
+  borderRadius: string;
+  gap: string;
+};
+
 export type Theme = {
   colors: {
     primary: string;
@@ -71,9 +81,9 @@ export type Theme = {
     modal: number;
     notification: number;
   };
-  toggle: {
-    sm: { width: string; height: string; thumb: string; thumbOffset: string };
-    md: { width: string; height: string; thumb: string; thumbOffset: string };
-    lg: { width: string; height: string; thumb: string; thumbOffset: string };
-  };
+  control: { defaultSize: ControlSize } & Record<ControlSize, ControlSizeTokens>;
+  toggle: Record<
+    ControlSize,
+    { width: string; height: string; thumb: string; thumbOffset: string }
+  >;
 };

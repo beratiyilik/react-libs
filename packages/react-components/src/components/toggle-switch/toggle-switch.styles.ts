@@ -1,7 +1,8 @@
 import { styled } from "styled-components";
-import type { ToggleSwitchShape, ToggleSwitchSize } from "./toggle-switch.js";
+import type { ControlSize } from "../../theme/types.js";
+import type { ToggleSwitchShape } from "./toggle-switch.js";
 
-export const StyledToggleSwitchLabel = styled.label<{ $size: ToggleSwitchSize }>`
+export const StyledToggleSwitchLabel = styled.label<{ $size: ControlSize }>`
   position: relative;
   display: inline-block;
   width: ${({ theme, $size }) => theme.toggle[$size].width};
@@ -18,7 +19,7 @@ export const StyledToggleSwitchInput = styled.input`
 
 export const StyledToggleSwitchSlider = styled.span<{
   $checked: boolean;
-  $size: ToggleSwitchSize;
+  $size: ControlSize;
   $shape: ToggleSwitchShape;
 }>`
   position: absolute;
