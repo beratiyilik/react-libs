@@ -1,12 +1,14 @@
 "use client";
-import { useState, type HTMLAttributes } from "react";
+import { forwardRef, useId, useState, type HTMLAttributes } from "react";
+import { useTheme } from "styled-components";
 import {
   StyledSearchBoxContainer,
   StyledSearchBoxLabel,
   StyledSearchBoxInput,
 } from "./search-box.styles.js";
+import type { ControlSize } from "../../theme/types.js";
 
-export type SearchBoxSize = "sm" | "md" | "lg";
+export type SearchBoxSize = ControlSize;
 
 export type SearchBoxProps = Omit<HTMLAttributes<HTMLDivElement>, "onChange"> & {
   value?: string;
@@ -18,20 +20,24 @@ export type SearchBoxProps = Omit<HTMLAttributes<HTMLDivElement>, "onChange"> & 
   passive?: boolean;
 };
 
-let _id = 0;
-const nextId = () => `search-box-${++_id}`;
+export const SearchBox = forwardRef<HTMLInputElement, SearchBoxProps>(function SearchBox(
+  {
+    value,
+    onChange,
+    placeholder = "Search…",
+    label,
+    size,
+    fluid = false,
+    passive = false,
+    "aria-label": ariaLabel,
+    ...rest
+  },
+  ref,
+) {
+  const theme = useTheme();
+  const resolvedSize = size ?? theme.control.defaultSize;
 
-export const SearchBox = ({
-  value,
-  onChange,
-  placeholder = "Search…",
-  label,
-  size = "md",
-  fluid = false,
-  passive = false,
-  ...rest
-}: SearchBoxProps) => {
-  const [inputId] = useState(nextId);
+  const inputId = useId();
   const [internal, setInternal] = useState("");
 
   if (passive) return null;
@@ -44,21 +50,24 @@ export const SearchBox = ({
     onChange?.(next);
   };
 
+  const computedAriaLabel = label === undefined ? (ariaLabel ?? placeholder) : ariaLabel;
+
   return (
-    <StyledSearchBoxContainer $size={size} $fluid={fluid} {...rest}>
+    <StyledSearchBoxContainer $size={resolvedSize} $fluid={fluid} {...rest}>
       {label !== undefined && (
-        <StyledSearchBoxLabel htmlFor={inputId} $size={size}>
+        <StyledSearchBoxLabel htmlFor={inputId} $size={resolvedSize}>
           {label}
         </StyledSearchBoxLabel>
       )}
       <StyledSearchBoxInput
+        ref={ref}
         id={inputId}
-        type="text"
+        type="search"
         value={currentValue}
         placeholder={placeholder}
         onChange={({ target }) => handleChange(target.value)}
-        $size={size}
+        aria-label={computedAriaLabel}
       />
     </StyledSearchBoxContainer>
   );
-};
+});

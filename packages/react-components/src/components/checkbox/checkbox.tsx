@@ -1,13 +1,15 @@
 "use client";
 import { useEffect, useRef, useState, type InputHTMLAttributes } from "react";
+import { useTheme } from "styled-components";
 import {
   StyledCheckboxWrapper,
   StyledCheckboxInput,
   StyledCheckboxIcon,
   StyledCheckboxLabel,
 } from "./checkbox.styles.js";
+import type { ControlSize } from "../../theme/types.js";
 
-export type CheckboxSize = "sm" | "md" | "lg";
+export type CheckboxSize = ControlSize;
 
 export type CheckboxProps = Omit<InputHTMLAttributes<HTMLInputElement>, "size" | "onChange"> & {
   checked?: boolean;
@@ -17,7 +19,7 @@ export type CheckboxProps = Omit<InputHTMLAttributes<HTMLInputElement>, "size" |
   label?: string;
 };
 
-const iconSize: Record<CheckboxSize, number> = { sm: 10, md: 12, lg: 14 };
+const iconSize: Record<ControlSize, number> = { xs: 8, sm: 10, md: 12, lg: 14, xl: 16 };
 
 const CheckIcon = ({ size }: { size: number }) => (
   <svg width={size} height={size} viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -41,12 +43,15 @@ export const Checkbox = ({
   checked,
   onChange,
   indeterminate = false,
-  size = "md",
+  size,
   label,
   disabled = false,
   id,
   ...rest
 }: CheckboxProps) => {
+  const theme = useTheme();
+  const resolvedSize = size ?? theme.control.defaultSize;
+
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputId] = useState(() => id ?? `checkbox-${Math.random().toString(36).slice(2, 7)}`);
 
@@ -57,11 +62,11 @@ export const Checkbox = ({
   }, [indeterminate]);
 
   const isChecked = checked ?? false;
-  const px = iconSize[size];
+  const px = iconSize[resolvedSize];
 
   const box = (
     <StyledCheckboxWrapper
-      $size={size}
+      $size={resolvedSize}
       $checked={isChecked}
       $indeterminate={indeterminate}
       $disabled={disabled}

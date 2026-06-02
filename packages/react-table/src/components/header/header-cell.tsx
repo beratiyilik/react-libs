@@ -81,10 +81,8 @@ export const HeaderCell = <T extends Record<string, unknown>>({
           <StyledHeaderName>{headerName ?? fieldName}</StyledHeaderName>
           <Sort field={_sortFieldName} passive={!sortable} sort={sort} setSort={setSort} />
           <Filter
-            field={_filterFieldName}
             passive={!filterable}
             filter={filter}
-            setFilter={setFilter}
             onToggle={() => setFilterOpen((prev) => !prev)}
           />
           {selection && selectionComponent}

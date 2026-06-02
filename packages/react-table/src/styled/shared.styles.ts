@@ -7,34 +7,6 @@ export const StyledPaginationContainer = styled.div`
   padding: ${({ theme }) => `${theme.spacing.xs} ${theme.spacing.md}`};
 `;
 
-export const StyledPaginationButton = styled.button`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.75rem;
-  height: 1.75rem;
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: ${({ theme }) => theme.radius.md};
-  background-color: ${({ theme }) => theme.colors.background};
-  color: ${({ theme }) => theme.colors.foreground};
-  font-family: ${({ theme }) => theme.font.family};
-  font-size: ${({ theme }) => theme.font.size.sm};
-  cursor: pointer;
-  transition: background-color ${({ theme }) => theme.transition.duration.default}
-    ${({ theme }) => theme.transition.easing.default};
-  @media (prefers-reduced-motion: reduce) {
-    transition: none;
-  }
-  &:hover:not(:disabled) {
-    background-color: ${({ theme }) => theme.colors.surface};
-  }
-  &:disabled {
-    color: ${({ theme }) => theme.colors.mutedForeground};
-    cursor: not-allowed;
-    background-color: ${({ theme }) => theme.colors.surface};
-  }
-`;
-
 export const StyledPaginationSelect = styled.select`
   padding: ${({ theme }) => `${theme.spacing.xs} ${theme.spacing.sm}`};
   border: 1px solid ${({ theme }) => theme.colors.border};
@@ -44,7 +16,7 @@ export const StyledPaginationSelect = styled.select`
   font-family: ${({ theme }) => theme.font.family};
   font-size: ${({ theme }) => theme.font.size.sm};
   cursor: pointer;
-  height: 1.75rem;
+  height: ${({ theme }) => theme.control.sm.height};
 `;
 
 export const StyledPaginationPageInfo = styled.span`
@@ -85,28 +57,6 @@ export const StyledFilterIconRow = styled.div`
   width: 100%;
 `;
 
-export const StyledFilterToggleButton = styled.button<{ $active: boolean }>`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.25rem;
-  height: 1.25rem;
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-  color: ${({ theme, $active }) => ($active ? theme.colors.primary : theme.colors.mutedForeground)};
-  transition: color ${({ theme }) => theme.transition.duration.default}
-    ${({ theme }) => theme.transition.easing.default};
-  @media (prefers-reduced-motion: reduce) {
-    transition: none;
-  }
-  flex-shrink: 0;
-  &:hover {
-    color: ${({ theme, $active }) => ($active ? theme.colors.primary : theme.colors.foreground)};
-  }
-`;
-
 export const StyledFilterInputWrapper = styled.div`
   margin-top: ${({ theme }) => theme.spacing.xs};
   width: 100%;
@@ -129,31 +79,6 @@ export const StyledFilterInput = styled.input`
   }
   &:focus {
     border-color: ${({ theme }) => theme.colors.primary};
-  }
-`;
-
-export const StyledSortButton = styled.button`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  width: 1.25rem;
-  height: 1.25rem;
-  border: none;
-  border-radius: ${({ theme }) => theme.radius.sm};
-  background-color: transparent;
-  color: ${({ theme }) => theme.colors.mutedForeground};
-  font-family: ${({ theme }) => theme.font.family};
-  font-size: ${({ theme }) => theme.font.size.sm};
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: color ${({ theme }) => theme.transition.duration.default}
-    ${({ theme }) => theme.transition.easing.default};
-  @media (prefers-reduced-motion: reduce) {
-    transition: none;
-  }
-  &:hover {
-    color: ${({ theme }) => theme.colors.foreground};
   }
 `;
 

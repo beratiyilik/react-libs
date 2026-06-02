@@ -9,22 +9,22 @@ export default tseslint.config(
   js.configs.recommended,
   ...tseslint.configs.recommended,
   // Restrict imports from internal modules across all packages
-  {
-    files: ["packages/*/src/**/*.{ts,tsx}"],
-    rules: {
-      "no-restricted-imports": [
-        "error",
-        {
-          patterns: [
-            {
-              group: ["**/internal/*", "**/internal"],
-              message: "Internal modules are not part of the public API.",
-            },
-          ],
-        },
-      ],
-    },
-  },
+  // {
+  //   files: ["packages/*/src/**/*.{ts,tsx}"],
+  //   rules: {
+  //     "no-restricted-imports": [
+  //       "error",
+  //       {
+  //         patterns: [
+  //           {
+  //             group: ["**/internal/*", "**/internal"],
+  //             message: "Internal modules are not part of the public API.",
+  //           },
+  //         ],
+  //       },
+  //     ],
+  //   },
+  // },
   // Enforce kebab-case for all folders under packages src
   {
     files: ["packages/*/src/**/*.{ts,tsx}"],

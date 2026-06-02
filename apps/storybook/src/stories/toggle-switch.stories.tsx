@@ -10,13 +10,13 @@ const meta: Meta<typeof ToggleSwitch> = {
     docs: {
       description: {
         component:
-          "A controlled toggle switch component. Requires `selected` and `onChange` props. Supports `sm`, `md`, and `lg` sizes.",
+          "A controlled toggle switch component. Requires `selected` and `onChange` props. Supports `xs`, `sm`, `md`, `lg`, and `xl` sizes.",
       },
     },
   },
   argTypes: {
     selected: { control: "boolean" },
-    size: { control: "select", options: ["sm", "md", "lg"] },
+    size: { control: "select", options: ["xs", "sm", "md", "lg", "xl"] },
     shape: { control: "select", options: ["pill", "square"] },
   },
 };
@@ -60,17 +60,17 @@ export const Large: Story = {
 
 export const AllSizes: Story = {
   parameters: {
-    docs: { description: { story: "All three sizes side by side for comparison." } },
+    docs: { description: { story: "All five sizes side by side for comparison." } },
   },
   render: () => {
-    const [sm, setSm] = useState(false);
-    const [md, setMd] = useState(true);
-    const [lg, setLg] = useState(false);
+    const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
+    const [vals, setVals] = useState(sizes.map((_, i) => i % 2 === 0));
+    const toggle = (i: number) => setVals((prev) => prev.map((v, idx) => (idx === i ? !v : v)));
     return (
-      <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-        <ToggleSwitch selected={sm} onChange={() => setSm((p) => !p)} size="sm" />
-        <ToggleSwitch selected={md} onChange={() => setMd((p) => !p)} size="md" />
-        <ToggleSwitch selected={lg} onChange={() => setLg((p) => !p)} size="lg" />
+      <div style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap" }}>
+        {sizes.map((size, i) => (
+          <ToggleSwitch key={size} selected={vals[i]!} onChange={() => toggle(i)} size={size} />
+        ))}
       </div>
     );
   },
@@ -108,13 +108,14 @@ export const ShapeComparison: Story = {
     docs: { description: { story: "Pill vs Square shape comparison across all sizes." } },
   },
   render: () => {
-    const [v, setV] = useState([true, false, true, false, true, false]);
+    const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
+    const [v, setV] = useState(sizes.flatMap((_, i) => [i % 2 === 0, i % 2 !== 0]));
     const toggle = (i: number) => setV((prev) => prev.map((val, idx) => (idx === i ? !val : val)));
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap" }}>
           <span style={{ width: "4rem", fontSize: "0.75rem" }}>Pill</span>
-          {(["sm", "md", "lg"] as const).map((size, i) => (
+          {sizes.map((size, i) => (
             <ToggleSwitch
               key={size}
               selected={v[i]!}
@@ -124,13 +125,13 @@ export const ShapeComparison: Story = {
             />
           ))}
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap" }}>
           <span style={{ width: "4rem", fontSize: "0.75rem" }}>Square</span>
-          {(["sm", "md", "lg"] as const).map((size, i) => (
+          {sizes.map((size, i) => (
             <ToggleSwitch
               key={size}
-              selected={v[i + 3]!}
-              onChange={() => toggle(i + 3)}
+              selected={v[i + 5]!}
+              onChange={() => toggle(i + 5)}
               size={size}
               shape="square"
             />

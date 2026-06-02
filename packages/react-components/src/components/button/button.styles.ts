@@ -1,25 +1,12 @@
 import { css, keyframes, styled } from "styled-components";
-import type { ButtonSize, ButtonVariant } from "./button.js";
+import type { ButtonVariant } from "./button.types.js";
+import type { ControlSize } from "../../theme/types.js";
+import { controlBase } from "../../internal/control-base.js";
 
 const spin = keyframes`
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 `;
-
-const sizeStyles = {
-  sm: css`
-    padding: ${({ theme }) => `${theme.spacing.xs} ${theme.spacing.sm}`};
-    font-size: ${({ theme }) => theme.font.size.sm};
-  `,
-  md: css`
-    padding: ${({ theme }) => `${theme.spacing.sm} ${theme.spacing.md}`};
-    font-size: ${({ theme }) => theme.font.size.md};
-  `,
-  lg: css`
-    padding: ${({ theme }) => `${theme.spacing.md} ${theme.spacing.lg}`};
-    font-size: ${({ theme }) => theme.font.size.lg};
-  `,
-};
 
 const variantStyles = {
   primary: css`
@@ -66,18 +53,15 @@ const variantStyles = {
 
 export const StyledButton = styled.button<{
   $variant: ButtonVariant;
-  $size: ButtonSize;
+  $size: ControlSize;
   $loading: boolean;
+  $iconOnly: boolean;
 }>`
-  display: inline-flex;
-  align-items: center;
+  ${({ $size, $iconOnly }) => controlBase($size, { iconOnly: $iconOnly })}
   justify-content: center;
-  border-radius: ${({ theme }) => theme.radius.md};
-  border: 1px solid transparent;
+  position: relative;
   cursor: ${({ $loading }) => ($loading ? "not-allowed" : "pointer")};
-  font-family: ${({ theme }) => theme.font.family};
   font-weight: ${({ theme }) => theme.font.weight.medium};
-  line-height: 1.5;
   transition:
     background-color ${({ theme }) => theme.transition.duration.default}
       ${({ theme }) => theme.transition.easing.default},
@@ -86,12 +70,30 @@ export const StyledButton = styled.button<{
   @media (prefers-reduced-motion: reduce) {
     transition: none;
   }
-  ${({ $size }) => sizeStyles[$size]}
   ${({ $variant }) => variantStyles[$variant]}
   &:disabled {
     opacity: 0.4;
     cursor: not-allowed;
   }
+`;
+
+export const StyledButtonContent = styled.span<{ $loading: boolean }>`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  opacity: ${({ $loading }) => ($loading ? 0 : 1)};
+`;
+
+export const StyledSpinnerWrapper = styled.span`
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const StyledSpinnerSvg = styled.svg`
